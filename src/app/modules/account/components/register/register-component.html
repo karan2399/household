@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center;">
+        <form [formGroup]="registerForm" class="text-center border border-light p-5" (submit)="doRegsiter($event)">
+
+
+            <div class="form-row mb-4">
+                <h1>
+                    Regsiter
+                </h1>
+                <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName" class="form-control"
+                    placeholder="First name">
+            </div>
+
+            <div class="form-row mb-4">
+                <input type="text" formControlName="lastName" id="defaultRegisterFormLastName" class="form-control"
+                    placeholder="Last name">
+            </div>
+
+            <div class="form-row mb-4">
+                <input type="email" formControlName="email" id="defaultRegisterFormEmail" class="form-control mb-4"
+                    placeholder="E-mail">
+            </div>
+
+            <div class="form-row mb-4">
+                <input type="password" formControlName="password" id="defaultRegisterFormPassword"
+                    class="form-control mb-4" placeholder="Password">
+            </div>
+
+            <div class="form-row mb-4">
+                <input type="password" formControlName="confirmPassword" id="defaultRegisterFormConfirmPassword"
+                    class="form-control mb-4" placeholder="Confirm Password">
+            </div>
+            <div class="form-row mb-4">
+                <input type="text" formControlName="phone" id="defaultRegisterFormPhone" class="form-control mb-4"
+                    placeholder="Phone">
+            </div>
+
+            <div class="row">
+                <button class="btn btn-info my-4 btn-block" type="submit">Register</button>
+                <button class="btn btn-info my-4 btn-block">Login</button>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

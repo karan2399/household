@@ -3,16 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SplashScreenModule } from 'src/modules/getstarted/components/splash/splash.module';
+import { SplashScreenModule } from 'src/app/modules/getstarted/components/splash/splash.module';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegsiterComponent } from './modules/account/components/register/register-component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    RegsiterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    SplashScreenModule
+    SplashScreenModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
