@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="col">
-                    <input type="email" formControlName="email" id="defaultRegisterFormEmail" class="form-control mb-4"
+                    <input type="email" formControlName="email" id="defaultLoginFormEmail" class="form-control mb-4"
                         placeholder="E-mail">
                 </div>
             </div>
@@ -39,20 +39,18 @@
                 </div>
 
                 <div class="col">
-                    <input type="password" formControlName="password" id="defaultRegisterFormPassword"
+                    <input type="password" formControlName="password" id="defaultLoginFormPassword"
                         class="form-control mb-4" placeholder="Password">
                 </div>
 
             </div>
 
-
-
-
-
             <div class="form-row mb-4">
                 <div class="col">
 
-                    <button type="submit" class="btn btn-info my-4 btn-block">Login</button>
+                    <button type="submit" class="btn btn-info my-4 btn-block">Login</button> &nbsp; &nbsp;
+                    <button type="button" (click)="onRegisterClick()"
+                        class="btn btn-info my-4 btn-block">Register</button>
                 </div>
 
             </div>

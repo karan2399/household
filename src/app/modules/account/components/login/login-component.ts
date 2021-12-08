@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/authentication/authentication-service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
     selector: 'login-component',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
     public loginForm: FormGroup;
 
-    constructor(private authService: AuthService) {
+
+    constructor(private authService: AuthService, private router: Router) {
         this.loginForm = new FormGroup({
             email: new FormControl(""),
             password: new FormControl(""),
@@ -29,8 +31,15 @@ export class LoginComponent implements OnInit {
     doLogin(e) {
         e.preventDefault();
         this.authService.login(this.loginForm.value).subscribe(res => {
-            console.log('Login Response: ' + res);
+            if (res.statusCode == 200) {
+                this.authService.userLoggedIn = true;
+                this.router.navigate(['/home']);
+            }
         });
+    }
+
+    onRegisterClick() {
+        this.router.navigate(['/register']);
     }
 }
 

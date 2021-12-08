@@ -8,12 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegsiterComponent } from './modules/account/components/register/register-component';
-import { LoginComponentModule } from './modules/account/components/login/login-component.module';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { LoginComponent } from './modules/account/components/login/login-component';
+import { MatIconModule } from '@angular/material/icon';
+import { HomeComponent } from './modules/account/components/home/home-component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegsiterComponent,
+    LoginComponent,
+    HomeComponent,
 
   ],
   imports: [
@@ -23,7 +29,10 @@ import { LoginComponentModule } from './modules/account/components/login/login-c
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatIconModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

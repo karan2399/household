@@ -5,10 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { MatInputModule } from '@angular/material/input';
-import { LoginComponent } from './login-component';
+import { HomeComponent } from './home-component';
 
 @NgModule({
-    declarations: [LoginComponent],
+    declarations: [HomeComponent],
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
@@ -18,6 +18,6 @@ import { LoginComponent } from './login-component';
         MatInputModule
     ],
     providers: [],
-    exports: [LoginComponent],
+    exports: [HomeComponent],
 })
-export class LoginComponentModule { }
+export class HomeComponentModule { }
