@@ -13,6 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LoginComponent } from './modules/account/components/login/login-component';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './modules/account/components/home/home-component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HomeComponent } from './modules/account/components/home/home-component'
     ReactiveFormsModule,
     MatSidenavModule,
     MatIconModule,
+    MatSnackBarModule,
 
   ],
   providers: [],

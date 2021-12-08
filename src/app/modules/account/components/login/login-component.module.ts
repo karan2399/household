@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './login-component';
 
+
 @NgModule({
     declarations: [LoginComponent],
     imports: [
@@ -15,7 +16,8 @@ import { LoginComponent } from './login-component';
         MatGridListModule,
         FormsModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+
     ],
     providers: [],
     exports: [LoginComponent],

@@ -8,7 +8,7 @@
 
 <body>
     <div style="display: flex; justify-content: center;border: 1px solid teal;">
-        <form [formGroup]="loginForm" class="text-center border border-light p-5" (submit)="doLogin($event)">
+        <form [formGroup]="loginForm" class="text-center" (submit)="doLogin($event)">
 
 
             <div class="form-row mb-4">
@@ -17,9 +17,6 @@
                 </h1>
 
             </div>
-
-
-
             <div class="form-row mb-4">
                 <div class="col">
                     <label>Email</label>
@@ -28,6 +25,13 @@
                 <div class="col">
                     <input type="email" formControlName="email" id="defaultLoginFormEmail" class="form-control mb-4"
                         placeholder="E-mail">
+                </div>
+            </div>
+            <div class="row">
+                <div *ngIf="!email.valid && email.touched" class="input-error">
+                    <p>
+                        Please enter your Email Address
+                    </p>
                 </div>
             </div>
 
@@ -44,13 +48,20 @@
                 </div>
 
             </div>
+            <div class="row">
+                <div *ngIf="!password.valid && password.touched" class="input-error">
+                    <p>
+                        Please enter your Password
+                    </p>
+                </div>
+            </div>
 
             <div class="form-row mb-4">
                 <div class="col">
 
-                    <button type="submit" class="btn btn-info my-4 btn-block">Login</button> &nbsp; &nbsp;
-                    <button type="button" (click)="onRegisterClick()"
-                        class="btn btn-info my-4 btn-block">Register</button>
+                    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button> &nbsp;
+                    &nbsp;
+                    <button type="button" (click)="onRegisterClick()" class="btn btn-secondary">Register</button>
                 </div>
 
             </div>
