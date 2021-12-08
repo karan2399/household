@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegsiterComponent } from './modules/account/components/register/register-component';
+import { LoginComponentModule } from './modules/account/components/login/login-component.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegsiterComponent
+    RegsiterComponent,
+
   ],
   imports: [
     BrowserModule,

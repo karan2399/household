@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'https://192.168.2.18/api/';
+const AUTH_API = 'https://hometaskapp.azurewebsites.net';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,27 +12,34 @@ const httpOptions = {
     providedIn: 'root'
 })
 export class AuthService {
+
+
     constructor(private http: HttpClient) { }
 
-    login(username: string, password: string): Observable<any> {
-        return this.http.post(AUTH_API + 'signin', {
-            username,
-            password
-        }, httpOptions);
+    login(userData: any): Observable<any> {
+        let obj = {
+
+            email: userData.email,
+            password: userData.password,
+
+        }
+        return this.http.post(AUTH_API + '/api/login', obj, httpOptions);
     }
 
     register(userData: any): Observable<any> {
 
         let obj = {
-            firstName: userData.firstName,
-            lastName: userData.lastName,
+            firstname: userData.firstName,
+            lastname: userData.lastName,
             email: userData.email,
-            phoneNumber: userData.phoneNumber,
+            phonenumber: userData.phoneNumber,
             password: userData.password,
+            birthdate: userData.birthdate,
+            username: userData.username,
+
         }
-        console.log(obj);
-        return this.http.post(AUTH_API + 'Register/Register', {
-            obj
-        }, httpOptions);
+        console.log('Register Object: ' + obj);
+        return this.http.post(AUTH_API + '/api/Register',
+            obj);
     }
 }

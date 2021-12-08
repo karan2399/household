@@ -15,17 +15,21 @@ export class RegsiterComponent implements OnInit {
     public email: FormControl;
     public password: FormControl;
     public confirmPassword: FormControl;
+    public birthdate: FormControl;
+    public username: FormControl;
 
     public registerForm: FormGroup;
 
-    constructor(private authService: AuthService,) {
+    constructor(private authService: AuthService) {
         this.registerForm = new FormGroup({
             firstName: new FormControl(""),
             lastName: new FormControl(""),
             email: new FormControl(""),
-            phone: new FormControl(""),
+            phoneNumber: new FormControl(""),
             password: new FormControl(""),
             confirmPassword: new FormControl(""),
+            birthdate: new FormControl(""),
+            username: new FormControl(""),
         })
     }
 
@@ -35,7 +39,9 @@ export class RegsiterComponent implements OnInit {
 
     doRegsiter(e) {
         e.preventDefault();
-        this.authService.register(this.registerForm.value);
+        this.authService.register(this.registerForm.value).subscribe(res => {
+            console.log('Register Response: ' + res);
+        });
     }
 }
 
