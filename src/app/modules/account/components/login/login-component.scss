@@ -1,4 +1,10 @@
 *{
+    margin:10px;
+}
+#loginBox{
     padding: 0.2rem;
-    background-color: wheat;
+    background-color:cadetblue;
+    display: flex; 
+    justify-content: center;
+    border: 1px solid teal;
 }

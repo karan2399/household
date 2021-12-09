@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     doLogin(e) {
         e.preventDefault();
         this.authService.login(this.loginForm.value).subscribe(res => {
+            console.log(res);
             if (res.statusCode == 200) {
                 this.authService.userLoggedIn = true;
                 this.snackBar.open('You are now logged in', 'close', {

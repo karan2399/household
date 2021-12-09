@@ -24,6 +24,7 @@ export class AuthService {
             password: userData.password,
 
         }
+        console.log('Login Object: ' + obj.email + ' ' + obj.password);
         return this.http.post(AUTH_API + '/api/login', obj, httpOptions);
     }
 
