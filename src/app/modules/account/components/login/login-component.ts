@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(this.loginForm.value).subscribe(res => {
             console.log(res);
             if (res.statusCode == 200) {
+                localStorage.setItem('token',this.email.value);  //res.token
                 this.authService.userLoggedIn = true;
                 this.snackBar.open('You are now logged in', 'close', {
                     duration: 3000,

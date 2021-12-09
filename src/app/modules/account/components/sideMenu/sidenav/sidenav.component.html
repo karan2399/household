@@ -1,0 +1,28 @@
+<mat-toolbar class="toolBar">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click) = "sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    Home App
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav">
+        <button mat-button class="menu-button">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-sidenav>  
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z4">
+            <home-component></home-component>
+        </div>
+    </mat-sidenav-content>  
+</mat-sidenav-container>

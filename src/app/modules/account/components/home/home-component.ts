@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from '../../services/authentication/authentication-service';
 
 @Component({
@@ -12,15 +14,11 @@ export class HomeComponent implements OnInit {
     opened: boolean;
 
 
-
-    constructor(private authService: AuthService) {
-
-    }
+    constructor(private authService: AuthService) {}
+    
 
     ngOnInit() {
-
     }
-
 
 }
 

@@ -10,10 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegsiterComponent } from './modules/account/components/register/register-component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './modules/account/components/login/login-component';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './modules/account/components/home/home-component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SidenavComponent } from './modules/account/components/sideMenu/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RegsiterComponent,
     LoginComponent,
     HomeComponent,
+    SidenavComponent,
 
   ],
   imports: [
@@ -34,7 +37,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSidenavModule,
     MatIconModule,
     MatSnackBarModule,
-
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

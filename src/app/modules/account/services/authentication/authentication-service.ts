@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const AUTH_API = 'https://hometaskapp.azurewebsites.net';
 
@@ -19,13 +20,23 @@ export class AuthService {
 
     login(userData: any): Observable<any> {
         let obj = {
-
             email: userData.email,
             password: userData.password,
-
         }
         console.log('Login Object: ' + obj.email + ' ' + obj.password);
         return this.http.post(AUTH_API + '/api/login', obj, httpOptions);
+    }
+
+    isLoggedIn(){
+        // const token = localStorage.getItem('token');
+        // console.log(token);
+        // const payload = atob(token.split('.')[1]);
+        
+        // const parsedPayload = JSON.parse(payload); 
+
+        //checking expiration time/date
+        // return parsedPayload.exp > Date.now() / 1000;        //TODO: Token remaining
+        return this.userLoggedIn;
     }
 
     register(userData: any): Observable<any> {
