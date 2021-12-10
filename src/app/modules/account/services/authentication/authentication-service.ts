@@ -27,16 +27,17 @@ export class AuthService {
         return this.http.post(AUTH_API + '/api/login', obj, httpOptions);
     }
 
-    isLoggedIn(){
-        // const token = localStorage.getItem('token');
-        // console.log(token);
-        // const payload = atob(token.split('.')[1]);
-        
-        // const parsedPayload = JSON.parse(payload); 
+    isLoggedIn() {
+        const token = localStorage.getItem('token');
+        if (token) {
+            const payload = atob(token.split('.')[1]);
 
-        //checking expiration time/date
-        // return parsedPayload.exp > Date.now() / 1000;        //TODO: Token remaining
-        return this.userLoggedIn;
+            const parsedPayload = JSON.parse(payload);
+
+            // checking expiration time / date
+            return parsedPayload.exp > Date.now() / 1000;        //TODO: Token remaining
+        }
+
     }
 
     register(userData: any): Observable<any> {

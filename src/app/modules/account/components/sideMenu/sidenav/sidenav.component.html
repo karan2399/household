@@ -1,5 +1,5 @@
 <mat-toolbar class="toolBar">
-    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click) = "sidenav.toggle()">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
         <mat-icon *ngIf="!sidenav.opened">
             menu
         </mat-icon>
@@ -17,12 +17,12 @@
         </button>
         <button mat-button class="menu-button">
             <mat-icon>exit_to_app</mat-icon>
-            <span>Logout</span>
+            <span (click)="onLogout()">Logout</span>
         </button>
-    </mat-sidenav>  
+    </mat-sidenav>
     <mat-sidenav-content>
         <div class="content mat-elevation-z4">
             <home-component></home-component>
         </div>
-    </mat-sidenav-content>  
+    </mat-sidenav-content>
 </mat-sidenav-container>

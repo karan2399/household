@@ -9,9 +9,11 @@ import { AuthGuard } from './modules/Guards/AuthGuard/auth.guard';
 const routes: Routes = [
     { path: 'register', component: RegsiterComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent,
-         }, //canActivate:[AuthGuard],
-    { path: '**', component: SidenavComponent },
+    {
+        path: 'sidenav', component: SidenavComponent,
+        canActivate: [AuthGuard],
+    },
+    { path: '**', component: LoginComponent },
 ];
 
 @NgModule({
