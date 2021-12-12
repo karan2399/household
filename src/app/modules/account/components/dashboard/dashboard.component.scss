@@ -3,7 +3,7 @@ mat-sidenav {
     margin: 16px;
     width: 200px;
     border-radius: 10px;
-    background: purple;
+    background: cadetblue;
     color: white;
     padding: 16px;
     text-align: center;
@@ -30,6 +30,9 @@ mat-sidenav-container{
     align-items: center;
     justify-content: flex-start;
     font-size: 1rem;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    margin-top: 10px;
 
     mat-icon{
         margin-right: 8px;

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
                     duration: 3000,
                     panelClass: 'my-custom-snackbar',
                 });
-                this.router.navigate(['/sidenav']);
+                this.router.navigate(['/dash']);
             }
         });
     }

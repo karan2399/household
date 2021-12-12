@@ -15,7 +15,9 @@ import { LoginComponent } from './modules/account/components/login/login-compone
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './modules/account/components/home/home-component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SidenavComponent } from './modules/account/components/sideMenu/sidenav/sidenav.component';
+import { DashboardComponent } from './modules/account/components/dashboard/dashboard.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { SidenavComponent } from './modules/account/components/sideMenu/sidenav/
     RegsiterComponent,
     LoginComponent,
     HomeComponent,
-    SidenavComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -37,7 +39,8 @@ import { SidenavComponent } from './modules/account/components/sideMenu/sidenav/
     MatSidenavModule,
     MatIconModule,
     MatSnackBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
