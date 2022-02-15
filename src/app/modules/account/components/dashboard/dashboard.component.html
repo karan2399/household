@@ -12,7 +12,7 @@
     </h3>
 </mat-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav">
+    <mat-sidenav [(opened)]="opened" #sidenav="matSidenav">
         <button mat-button class="menu-button">
             <mat-icon>home</mat-icon>
             <span>Home</span>
@@ -23,8 +23,7 @@
         </button>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div class="content mat-elevation-z4">
-            <home-component></home-component>
-        </div>
+        <button (click)="opened=!opened">Toggle Side Nav</button>
+        <home-component></home-component>
     </mat-sidenav-content>
 </mat-sidenav-container>

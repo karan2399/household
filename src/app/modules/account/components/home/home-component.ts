@@ -11,14 +11,10 @@ import { AuthService } from '../../services/authentication/authentication-servic
 })
 export class HomeComponent implements OnInit {
     events: string[] = [];
-    opened: boolean;
-
-
-    constructor(private authService: AuthService) {}
-    
-
+    constructor(private authService: AuthService) { }
     ngOnInit() {
     }
 
+    userFName;
 }
 

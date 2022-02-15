@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogSelectHomeDialog } from '../../dialogs/selectHome/dialog-select-home';
+import { AuthService } from '../../services/authentication/authentication-service';
 export interface DialogSelectData {
   home: string;
 
@@ -16,25 +17,37 @@ export interface DialogSelectData {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  userDetails;
+  opened = false;
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   home: string;
   constructor(private observer: BreakpointObserver,
+    private authService: AuthService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router) {
-    const dialogRef = this.dialog.open(DialogSelectHomeDialog, {
-      width: '250px',
-      data: { home: this.home, },
-    });
+    // const dialogRef = this.dialog.open(DialogSelectHomeDialog, {
+    //   width: '250px',
+    //   data: { home: this.home, },
+    // });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The select home dialog was closed');
-      this.home = result;
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The select home dialog was closed');
+    //   this.home = result;
+    // });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.authService.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res;
+        console.log(this.userDetails);
+      },
+      err => {
+        console.log(err);
+      },
+    )
 
   }
 
