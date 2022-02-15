@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
             password: new FormControl("", [Validators.required]),
         })
     }
-
+    isDisabled = false;
     ngOnInit() {
         this.email = this.loginForm.get('email');
         this.password = this.loginForm.get('password');
@@ -38,15 +38,18 @@ export class LoginComponent implements OnInit {
         e.preventDefault();
         this.authService.login(this.loginForm.value).subscribe(res => {
             console.log(res);
-            if (res.code == 1) {
+            if (res.success == true) {
                 localStorage.setItem('token', res.token);  //res.token
                 this.authService.userLoggedIn = true;
+                this.isDisabled = false;
                 this.snackBar.open('You are now logged in', 'close', {
                     duration: 3000,
                     panelClass: 'my-custom-snackbar',
                 });
                 this.router.navigate(['/dash']);
             }
+                
+
         });
     }
 
