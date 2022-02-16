@@ -1,15 +1,19 @@
 <mat-toolbar class="toolBar">
-    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <!-- <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
         <mat-icon *ngIf="!sidenav.opened">
             menu
         </mat-icon>
         <mat-icon *ngIf="sidenav.opened">
             close
         </mat-icon>
-    </button>
+    </button> -->
+    <mat-icon class="sidenav-menu-icon" (click)="opened=!opened">
+        menu
+    </mat-icon>
     <h3 class="px-2">
         Home Tasks
     </h3>
+
 </mat-toolbar>
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" #sidenav="matSidenav">
@@ -23,7 +27,8 @@
         </button>
     </mat-sidenav>
     <mat-sidenav-content>
-        <button (click)="opened=!opened">Toggle Side Nav</button>
-        <home-component></home-component>
+        <div class="content">
+            <home-component [isAdmin]="isAdmin"></home-component>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

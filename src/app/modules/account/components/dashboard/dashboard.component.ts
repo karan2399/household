@@ -19,6 +19,7 @@ export interface DialogSelectData {
 export class DashboardComponent implements OnInit {
   userDetails;
   opened = false;
+  isAdmin: boolean = false;
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   home: string;
@@ -42,12 +43,19 @@ export class DashboardComponent implements OnInit {
     this.authService.getUserProfile().subscribe(
       res => {
         this.userDetails = res;
-        console.log(this.userDetails);
+        if (this.userDetails['role'] === 'Admin') {
+          console.log(this.userDetails);
+          this.authService.setRoleAdmin();
+          this.isAdmin = this.authService.getRoleAdmin();
+        }
+
       },
       err => {
         console.log(err);
       },
     )
+
+    console.log(this.authService.getRoleAdmin())
 
   }
 

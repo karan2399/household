@@ -1,3 +1,73 @@
-<div>
-    Welcome
+<div class="grid main-content">
+    <div class="row">
+        <div class="col">
+            {{myDate | date:'EEEE, MMMM d, y h:mm a'}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="kitchenBox col">
+            <h2>
+                Kitchen
+            </h2>
+            <h4>
+                {{userKitchen}}
+            </h4>
+            <button class="btn btn-primary" *ngIf="isAdmin" (click)="kitchenDone()">DONE </button>
+        </div>
+        <div class="cuttingBox  col">
+            <h2>
+                Cutting
+            </h2>
+            <h4>
+                {{userCutting}}
+            </h4>
+            <button class="btn btn-primary" *ngIf="isAdmin" (click)="cuttingDone()"> DONE </button>
+
+        </div>
+        <div class="weeklyBox  col" hidden>
+            <h2>
+                Weekly
+            </h2>
+            <h3>
+                {{userKitchen}}
+            </h3>
+            <button class="btn btn-primary" *ngIf="isAdmin"> DONE </button>
+        </div>
+
+    </div>
+    <div class=" row">
+        <div class="col userListBox">
+            <h2>
+                Kitchen
+            </h2>
+            <div>
+                <ul *ngFor="let u of users">
+                    <li>
+                        <p>
+                            {{u.name}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col userListBox">
+            <h2>
+                Cutting
+            </h2>
+            <div>
+                <ul *ngFor="let u of usersCutting">
+                    <li>
+                        <p>
+                            {{u.name}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+
 </div>

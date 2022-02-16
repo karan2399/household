@@ -10,7 +10,7 @@ mat-sidenav {
 }
 
 .content{
-    height: calc(100vh - 98px);
+    // height: calc(100vh - 98px);
     margin: 16px;
     margin-left: 32px;
     display: flex;
@@ -37,4 +37,7 @@ mat-sidenav-container{
     mat-icon{
         margin-right: 8px;
     }
+}
+.sidenav-menu-icon {
+    cursor: pointer;
 }
