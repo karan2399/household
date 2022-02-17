@@ -9,6 +9,8 @@ import { HomeComponent } from './home-component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
     declarations: [HomeComponent],
@@ -21,7 +23,10 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
         MatInputModule,
         MatCardModule,
         MatIconModule,
-        MatButtonModule
+        MatButtonModule,
+        MatGridListModule,
+        MatSelectModule,
+        MatFormFieldModule,
     ],
     providers: [],
     exports: [HomeComponent],

@@ -16,6 +16,12 @@ export class HomeComponent implements OnInit {
     usersCutting;
     userCutting: string;
     userKitchen: string;
+    selectedOptionSwapKitchen: string;
+    selectedOptionWithKitchen: string;
+
+
+    selectedOptionSwapCutting: string;
+    selectedOptionWithCutting: string;
     myDate;
     constructor(private authService: AuthService) {
         setInterval(() => {
@@ -43,19 +49,20 @@ export class HomeComponent implements OnInit {
         // this.users = this.authService.getUsers();
         this.authService.getKitchenUserList().subscribe((uList: any) => {
             this.users = uList;
-            console.log(this.users);
             this.allocateKitchenTask();
             this.allocateCuttingTask();
-        })
+        });
+
 
     }
     allocateCuttingTask() {
-        this.userKitchen = this.users[0].firstName;
-        // console.log(this.users);
-
+        this.userCutting = this.usersCutting[0].name;
+        this.selectedOptionSwapCutting = this.usersCutting[0].name;
     }
     allocateKitchenTask() {
-        this.userCutting = this.usersCutting[0].name;
+        this.userKitchen = this.users[0].firstName;
+        this.selectedOptionSwapKitchen = this.users[0].firstName;
+
     }
     ngOnInit() {
 
@@ -64,6 +71,7 @@ export class HomeComponent implements OnInit {
     cuttingDone() {
         this.usersCutting.push(this.usersCutting.shift());
         this.userCutting = this.usersCutting[0].name;
+        this.selectedOptionSwapCutting = this.usersCutting[0].name;
         // Post New Updated User List
         // this.authService.postNewCuttingUsersList(this.users);
     }
@@ -71,8 +79,12 @@ export class HomeComponent implements OnInit {
     kitchenDone() {
         this.users.push(this.users.shift());
         this.userKitchen = this.users[0].firstName;
+        this.selectedOptionSwapKitchen = this.users[0].firstName;
         // Post New Updated User List
         // this.authService.postNewKitchenUsersList(this.users);
+    }
+    kitchenSwap() {
+        console.log(this.selectedOptionSwapKitchen + ' ' + this.selectedOptionWithKitchen);
     }
 
 }

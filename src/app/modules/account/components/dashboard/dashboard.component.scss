@@ -1,26 +1,16 @@
 
 mat-sidenav {
-    margin: 16px;
     width: 200px;
-    border-radius: 10px;
-    background: #D3D3D3;
+    background:transparent;
     color: white;
-    padding: 16px;
     text-align: center;
 }
 
 .toolBarCss{
-    background-color: black;
-    color: white;
+    color: black;
 }
 
 .content{
-    // height: calc(100vh - 98px);
-    margin: 16px;
-    margin-left: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 2rem;
     color: lightgray;
 }
@@ -32,11 +22,12 @@ mat-sidenav-container{
 .menu-button{
     width: 100%;
     display: flex;
+    margin-left: 10px;
     align-items: center;
     justify-content: flex-start;
     font-size: 1rem;
-    border-radius: 10px;
-    background-color: white;
+    border:none;
+    background-color: transparent;
     margin-top: 10px;
 
     mat-icon{

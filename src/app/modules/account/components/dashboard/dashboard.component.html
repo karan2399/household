@@ -1,16 +1,8 @@
 <mat-toolbar class="toolBar">
-    <!-- <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-        <mat-icon *ngIf="!sidenav.opened">
-            menu
-        </mat-icon>
-        <mat-icon *ngIf="sidenav.opened">
-            close
-        </mat-icon>
-    </button> -->
     <mat-icon class="sidenav-menu-icon" (click)="opened=!opened">
         menu
     </mat-icon>
-    <h3 class="px-2 toolBarCss">
+    <h3 class="mx-2 toolBarCss">
         Home Tasks
     </h3>
 
@@ -22,9 +14,14 @@
             <span>Home</span>
         </button>
         <button mat-button class="menu-button">
+            <mat-icon>account_circle</mat-icon>
+            <span (click)="goToProfile()">Profile</span>
+        </button>
+        <button mat-button class="menu-button">
             <mat-icon>exit_to_app</mat-icon>
             <span (click)="onLogout()">Logout</span>
         </button>
+
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="content">

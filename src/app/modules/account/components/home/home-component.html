@@ -1,14 +1,12 @@
 <div class="grid main-content">
-    <div class="">
-        <div class="row">
-            <div class="col">
-                <mat-card class="homeCard">
-                    {{myDate | date:'MMMM d, y'}}
-                </mat-card>
-                <mat-card class="homeCard my-2">
-                    {{myDate | date:'EEEE'}}
-                </mat-card>
-            </div>
+    <div class="row">
+        <div class="col">
+            <mat-card class="homeCard">
+                {{myDate | date:'MMMM d, y'}}
+            </mat-card>
+            <mat-card class="homeCard my-2">
+                {{myDate | date:'EEEE'}}
+            </mat-card>
         </div>
     </div>
     <div>
@@ -20,9 +18,27 @@
                     <mat-card-content>
                         {{userKitchen}}
                     </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button class="btn btn-primary" *ngIf="isAdmin" (click)="kitchenDone()">DONE</button>
-                    </mat-card-actions>
+
+                    <mat-card-content *ngIf="isAdmin">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Swap: </mat-label>
+                            <select matNativeControl [(ngModel)]="selectedOptionSwapKitchen" disabled>
+                                <option [value]="u.firstName" *ngFor="let u of users">{{u.firstName}}</option>
+                            </select>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>With: </mat-label> <br>
+                            <select matNativeControl [(ngModel)]="selectedOptionWith">
+                                <option [value]="u.firstName" *ngFor="let u of users">{{u.firstName}}</option>
+                            </select>
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <button mat-button class="btn btn-primary m-2" (click)="kitchenDone()">DONE</button><br>
+                            <button mat-button class="btn btn-primary m-2" (click)="kitchenSwap()">SWAP</button>
+                        </mat-card-actions>
+                    </mat-card-content>
+
                 </mat-card>
 
 
@@ -35,9 +51,32 @@
                     <mat-card-content>
                         {{userCutting}}
                     </mat-card-content>
-                    <mat-card-actions>
-                        <button class="btn btn-primary" *ngIf="isAdmin" (click)="cuttingDone()"> DONE </button>
-                    </mat-card-actions>
+
+                    <!-- <mat-card-actions>
+                        <button mat-button class="btn btn-primary" *ngIf="isAdmin" (click)="cuttingDone()"> DONE
+                        </button>
+                        <button mat-button class="btn btn-primary mx-2" *ngIf="isAdmin"
+                            (click)="cuttingSwap()">SWAP</button>
+                    </mat-card-actions> -->
+                    <mat-card-content *ngIf="isAdmin">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Swap: </mat-label> <br>
+                            <select matNativeControl [(ngModel)]="selectedOptionSwapCutting" disabled>
+                                <option [value]="u.name" *ngFor="let u of usersCutting">{{u.name}}</option>
+                            </select>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>With: </mat-label> <br>
+                            <select matNativeControl [(ngModel)]="selectedOptionWithCutting">
+                                <option [value]="u.name" *ngFor="let u of usersCutting">{{u.name}}</option>
+                            </select>
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <button mat-button class="btn btn-primary m-2" (click)="cuttingDone()">DONE</button><br>
+                            <button mat-button class="btn btn-primary m-2" (click)="cuttingSwap()">SWAP</button>
+                        </mat-card-actions>
+                    </mat-card-content>
                 </mat-card>
 
             </div>
@@ -59,15 +98,11 @@
                 <mat-card class="homeCard">
                     <mat-card-title>Kitchen</mat-card-title>
                     <mat-card-content>
-                        <div>
-                            <ul *ngFor="let u of users">
-                                <li>
-                                    <p>
-                                        {{u.firstName}}
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
+                        <mat-list role="list" *ngFor="let u of users">
+                            <div class="userListStyle">
+                                <mat-list-item class="userListStyle" role="listitem">{{u.firstName}}</mat-list-item>
+                            </div>
+                        </mat-list>
                     </mat-card-content>
                 </mat-card>
 
@@ -77,15 +112,11 @@
                 <mat-card class="homeCard">
                     <mat-card-title>Cutting</mat-card-title>
                     <mat-card-content>
-                        <div>
-                            <ul *ngFor="let u of usersCutting">
-                                <li>
-                                    <p>
-                                        {{u.name}}
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
+                        <mat-list role="list" *ngFor="let u of usersCutting">
+                            <div class="userListStyle">
+                                <mat-list-item role="listitem">{{u.name}}</mat-list-item>
+                            </div>
+                        </mat-list>
                     </mat-card-content>
                 </mat-card>
             </div>

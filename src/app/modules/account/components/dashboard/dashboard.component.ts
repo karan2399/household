@@ -79,4 +79,8 @@ export class DashboardComponent implements OnInit {
       panelClass: 'my-custom-snackbar',
     });
   }
+
+  goToProfile() {
+
+  }
 }
