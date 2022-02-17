@@ -3,10 +3,15 @@ mat-sidenav {
     margin: 16px;
     width: 200px;
     border-radius: 10px;
-    background: cadetblue;
+    background: #D3D3D3;
     color: white;
     padding: 16px;
     text-align: center;
+}
+
+.toolBarCss{
+    background-color: black;
+    color: white;
 }
 
 .content{
@@ -31,7 +36,7 @@ mat-sidenav-container{
     justify-content: flex-start;
     font-size: 1rem;
     border-radius: 10px;
-    background-color: blanchedalmond;
+    background-color: white;
     margin-top: 10px;
 
     mat-icon{

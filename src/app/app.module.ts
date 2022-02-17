@@ -20,6 +20,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AccountActivationComponent } from './modules/account/components/account-activation/account-activation.component';
 import { AuthService } from './modules/account/services/authentication/authentication-service';
 import { MyProfileComponent } from './modules/account/components/my-profile/my-profile.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -46,14 +47,15 @@ import { MyProfileComponent } from './modules/account/components/my-profile/my-p
     MatSnackBarModule,
     MatToolbarModule,
     MatDialogModule,
+    MatCardModule,
     ToastrModule.forRoot({
-      progressBar:true
+      progressBar: true
     })
   ],
-  providers: [AuthService,{
-    provide:HTTP_INTERCEPTORS,
-    useClass:AuthInterceptor,
-    multi:true
+  providers: [AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
   }],
   bootstrap: [AppComponent]
 })

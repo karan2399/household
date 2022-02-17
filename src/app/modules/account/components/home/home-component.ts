@@ -3,7 +3,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from '../../services/authentication/authentication-service';
-
+import { MatCard } from '@angular/material/card';
 @Component({
     selector: 'home-component',
     templateUrl: 'home-component.html',
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     constructor(private authService: AuthService) {
         setInterval(() => {
             this.myDate = Date.now();
-        }, 1);
+        }, 1000);
         this.users = [
             {
                 name: "Karan",
