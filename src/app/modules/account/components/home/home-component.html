@@ -1,37 +1,44 @@
 <div class="grid main-content">
-    <div class="cardCss">
-        <mat-card>
-            <div class="row">
-                <div class="col">
-                    {{myDate | date:'EEEE'}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
+    <div class="">
+        <div class="row">
+            <div class="col">
+                <mat-card class="homeCard">
                     {{myDate | date:'MMMM d, y'}}
-                </div>
+                </mat-card>
+                <mat-card class="homeCard my-2">
+                    {{myDate | date:'EEEE'}}
+                </mat-card>
             </div>
-        </mat-card>
+        </div>
     </div>
     <div>
         <div class="row">
-            <div class="col marginCard cardCss">
-                <h2>
-                    Kitchen
-                </h2>
-                <h6>
-                    {{userKitchen}}
-                </h6>
-                <button class="btn btn-primary" *ngIf="isAdmin" (click)="kitchenDone()">DONE</button>
+            <div class="col kitchenBox">
+                <mat-card class="homeCard">
+                    <mat-card-subtitle>Daily</mat-card-subtitle>
+                    <mat-card-title>Kitchen</mat-card-title>
+                    <mat-card-content>
+                        {{userKitchen}}
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button class="btn btn-primary" *ngIf="isAdmin" (click)="kitchenDone()">DONE</button>
+                    </mat-card-actions>
+                </mat-card>
+
+
             </div>
             <div class="cuttingBox  col">
-                <h2>
-                    Cutting
-                </h2>
-                <h4>
-                    {{userCutting}}
-                </h4>
-                <button class="btn btn-primary" *ngIf="isAdmin" (click)="cuttingDone()"> DONE </button>
+
+                <mat-card class="homeCard">
+                    <mat-card-subtitle>Daily</mat-card-subtitle>
+                    <mat-card-title>Cutting</mat-card-title>
+                    <mat-card-content>
+                        {{userCutting}}
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button class="btn btn-primary" *ngIf="isAdmin" (click)="cuttingDone()"> DONE </button>
+                    </mat-card-actions>
+                </mat-card>
 
             </div>
             <div class="weeklyBox  col" hidden>
@@ -46,35 +53,42 @@
 
         </div>
         <div class=" row">
+
+
             <div class="col userListBox">
-                <h2>
-                    Kitchen
-                </h2>
-                <div>
-                    <ul *ngFor="let u of users">
-                        <li>
-                            <p>
-                                {{u.name}}
-                            </p>
-                        </li>
-                    </ul>
-                </div>
+                <mat-card class="homeCard">
+                    <mat-card-title>Kitchen</mat-card-title>
+                    <mat-card-content>
+                        <div>
+                            <ul *ngFor="let u of users">
+                                <li>
+                                    <p>
+                                        {{u.firstName}}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
 
             </div>
             <div class="col userListBox">
-                <h2>
-                    Cutting
-                </h2>
-                <div>
-                    <ul *ngFor="let u of usersCutting">
-                        <li>
-                            <p>
-                                {{u.name}}
-                            </p>
-                        </li>
-                    </ul>
-                </div>
 
+                <mat-card class="homeCard">
+                    <mat-card-title>Cutting</mat-card-title>
+                    <mat-card-content>
+                        <div>
+                            <ul *ngFor="let u of usersCutting">
+                                <li>
+                                    <p>
+                                        {{u.name}}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
             </div>
         </div>
     </div>
+</div>

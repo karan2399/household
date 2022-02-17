@@ -12,7 +12,7 @@ import { MatCard } from '@angular/material/card';
 export class HomeComponent implements OnInit {
     events: string[] = [];
     @Input() isAdmin: boolean;
-    users;
+    users = [];
     usersCutting;
     userCutting: string;
     userKitchen: string;
@@ -21,26 +21,7 @@ export class HomeComponent implements OnInit {
         setInterval(() => {
             this.myDate = Date.now();
         }, 1000);
-        this.users = [
-            {
-                name: "Karan",
-            },
-            {
-                name: "Sharvil",
-            },
-            {
-                name: "Henil",
-            },
-            {
-                name: "Shivani",
-            },
-            {
-                name: "Vishal",
-            },
-            {
-                name: "DK",
-            }
-        ];
+
         this.usersCutting = [
             {
                 name: "Karan",
@@ -60,11 +41,18 @@ export class HomeComponent implements OnInit {
         ];
         // Get Latest User List from Web API
         // this.users = this.authService.getUsers();
-        this.allocateKitchenTask();
-        this.allocateCuttingTask();
+        this.authService.getKitchenUserList().subscribe((uList: any) => {
+            this.users = uList;
+            console.log(this.users);
+            this.allocateKitchenTask();
+            this.allocateCuttingTask();
+        })
+
     }
     allocateCuttingTask() {
-        this.userKitchen = this.users[0].name;
+        this.userKitchen = this.users[0].firstName;
+        // console.log(this.users);
+
     }
     allocateKitchenTask() {
         this.userCutting = this.usersCutting[0].name;
@@ -82,7 +70,7 @@ export class HomeComponent implements OnInit {
 
     kitchenDone() {
         this.users.push(this.users.shift());
-        this.userKitchen = this.users[0].name;
+        this.userKitchen = this.users[0].firstName;
         // Post New Updated User List
         // this.authService.postNewKitchenUsersList(this.users);
     }

@@ -6,6 +6,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home-component';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [HomeComponent],
@@ -15,7 +18,10 @@ import { HomeComponent } from './home-component';
         MatGridListModule,
         FormsModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule
     ],
     providers: [],
     exports: [HomeComponent],

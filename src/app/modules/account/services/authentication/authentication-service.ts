@@ -125,4 +125,8 @@ export class AuthService {
     return this.http.post(AUTH_API + '/api/SaveUserInformation', body);
   }
 
+  getKitchenUserList() {
+    return this.http.get(AUTH_API + '/api/getKitchenTask');
+  }
+
 }
