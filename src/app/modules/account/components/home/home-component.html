@@ -21,7 +21,7 @@
 
                     <mat-card-content *ngIf="isAdmin">
                         <mat-form-field appearance="fill">
-                            <mat-label>Swap: </mat-label>
+                            <mat-label>Swap: </mat-label> <br>
                             <select matNativeControl [(ngModel)]="selectedOptionSwapKitchen" disabled>
                                 <option [value]="u.firstName" *ngFor="let u of users">{{u.firstName}}</option>
                             </select>
@@ -29,7 +29,7 @@
                         <br>
                         <mat-form-field appearance="fill">
                             <mat-label>With: </mat-label> <br>
-                            <select matNativeControl [(ngModel)]="selectedOptionWith">
+                            <select matNativeControl [(ngModel)]="selectedOptionWithKitchen">
                                 <option [value]="u.firstName" *ngFor="let u of users">{{u.firstName}}</option>
                             </select>
                         </mat-form-field>
@@ -37,7 +37,24 @@
                             <button mat-button class="btn btn-primary m-2" (click)="kitchenDone()">DONE</button><br>
                             <button mat-button class="btn btn-primary m-2" (click)="kitchenSwap()">SWAP</button>
                         </mat-card-actions>
+
+
                     </mat-card-content>
+
+                    <div class="col">
+                        <mat-card class="homeCard">
+                            <mat-card-title>Kitchen</mat-card-title>
+                            <mat-card-content>
+                                <mat-list role="list" *ngFor="let u of users">
+                                    <div class="userListStyle">
+                                        <mat-list-item class="userListStyle" role="listitem">{{u.firstName}}
+                                        </mat-list-item>
+                                    </div>
+                                </mat-list>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
 
                 </mat-card>
 
@@ -77,48 +94,21 @@
                             <button mat-button class="btn btn-primary m-2" (click)="cuttingSwap()">SWAP</button>
                         </mat-card-actions>
                     </mat-card-content>
+                    <div>
+
+                        <mat-card class="homeCard">
+                            <mat-card-title>Cutting</mat-card-title>
+                            <mat-card-content>
+                                <mat-list role="list" *ngFor="let u of usersCutting">
+                                    <div class="userListStyle">
+                                        <mat-list-item role="listitem">{{u.name}}</mat-list-item>
+                                    </div>
+                                </mat-list>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
                 </mat-card>
 
-            </div>
-            <div class="weeklyBox  col" hidden>
-                <h2>
-                    Weekly
-                </h2>
-                <h3>
-                    {{userKitchen}}
-                </h3>
-                <button class="btn btn-primary" *ngIf="isAdmin"> DONE </button>
-            </div>
-
-        </div>
-        <div class=" row">
-
-
-            <div class="col userListBox">
-                <mat-card class="homeCard">
-                    <mat-card-title>Kitchen</mat-card-title>
-                    <mat-card-content>
-                        <mat-list role="list" *ngFor="let u of users">
-                            <div class="userListStyle">
-                                <mat-list-item class="userListStyle" role="listitem">{{u.firstName}}</mat-list-item>
-                            </div>
-                        </mat-list>
-                    </mat-card-content>
-                </mat-card>
-
-            </div>
-            <div class="col userListBox">
-
-                <mat-card class="homeCard">
-                    <mat-card-title>Cutting</mat-card-title>
-                    <mat-card-content>
-                        <mat-list role="list" *ngFor="let u of usersCutting">
-                            <div class="userListStyle">
-                                <mat-list-item role="listitem">{{u.name}}</mat-list-item>
-                            </div>
-                        </mat-list>
-                    </mat-card-content>
-                </mat-card>
             </div>
         </div>
     </div>

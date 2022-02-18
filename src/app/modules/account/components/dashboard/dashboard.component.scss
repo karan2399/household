@@ -1,18 +1,19 @@
 
 mat-sidenav {
     width: 200px;
-    background:transparent;
+    background:rgb(211, 208, 202);
     color: white;
     text-align: center;
 }
 
 .toolBarCss{
-    color: black;
+    color: rgb(37, 15, 15);
 }
 
 .content{
     font-size: 2rem;
     color: lightgray;
+    margin:5px;
 }
 
 mat-sidenav-container{

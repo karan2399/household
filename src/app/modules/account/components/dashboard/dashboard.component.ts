@@ -81,6 +81,9 @@ export class DashboardComponent implements OnInit {
   }
 
   goToProfile() {
-
+    this.router.navigate(['dash/profile']);
+  }
+  goToHome() {
+    this.router.navigate(['dash/home', { isAdmin: this.isAdmin }]);
   }
 }

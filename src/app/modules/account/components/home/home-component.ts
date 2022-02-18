@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from '../../services/authentication/authentication-service';
 import { MatCard } from '@angular/material/card';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'home-component',
     templateUrl: 'home-component.html',
@@ -11,7 +12,7 @@ import { MatCard } from '@angular/material/card';
 })
 export class HomeComponent implements OnInit {
     events: string[] = [];
-    @Input() isAdmin: boolean;
+    isAdmin;
     users = [];
     usersCutting;
     userCutting: string;
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
     selectedOptionSwapCutting: string;
     selectedOptionWithCutting: string;
     myDate;
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService, private dataRoute: ActivatedRoute) {
+        this.isAdmin = this.dataRoute.snapshot.params['isAdmin'];
         setInterval(() => {
             this.myDate = Date.now();
         }, 1000);
@@ -84,7 +86,16 @@ export class HomeComponent implements OnInit {
         // this.authService.postNewKitchenUsersList(this.users);
     }
     kitchenSwap() {
-        console.log(this.selectedOptionSwapKitchen + ' ' + this.selectedOptionWithKitchen);
+        let swapIndex;
+        this.users.forEach((u, index) => {
+            if (u.firstName == this.selectedOptionWithKitchen) {
+                swapIndex = index;
+            }
+        });
+        let temp;
+        temp = this.users[0];
+        this.users[0] = this.users[swapIndex];
+        this.users[swapIndex] = temp;
     }
 
 }

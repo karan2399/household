@@ -14,6 +14,11 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     {
         path: 'dash', component: DashboardComponent,
+        children: [
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', component: HomeComponent },
+            { path: 'profile', component: MyProfileComponent }
+        ],
         canActivate: [AuthGuard],
     },
     { path: 'myProfile', component: MyProfileComponent },
