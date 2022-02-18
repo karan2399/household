@@ -15,15 +15,14 @@ const routes: Routes = [
     {
         path: 'dash', component: DashboardComponent,
         children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'profile', component: MyProfileComponent }
+            { path: 'profile', component: MyProfileComponent },
+            { path: '**', component: HomeComponent },
         ],
         canActivate: [AuthGuard],
     },
-    { path: 'myProfile', component: MyProfileComponent },
-    { path: '**', component: LoginComponent },
     { path: 'dash', component: DashboardComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin'] } },
+    { path: '**', component: LoginComponent },
 
 ];
 

@@ -21,6 +21,8 @@ import { AccountActivationComponent } from './modules/account/components/account
 import { AuthService } from './modules/account/services/authentication/authentication-service';
 import { MyProfileComponent } from './modules/account/components/my-profile/my-profile.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -48,6 +50,9 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatDialogModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+
     ToastrModule.forRoot({
       progressBar: true
     })

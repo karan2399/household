@@ -48,15 +48,11 @@ export class DashboardComponent implements OnInit {
           this.authService.setRoleAdmin();
           this.isAdmin = this.authService.getRoleAdmin();
         }
-
       },
       err => {
         console.log(err);
       },
     )
-
-    console.log(this.authService.getRoleAdmin())
-
   }
 
   ngAfterViewInit() {

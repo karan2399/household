@@ -1,38 +1,32 @@
 <form [formGroup]="myProfileModel" autocomplete="off" (submit)="onSubmit()">
-    <h2>Profile</h2>
+    <h1>Profile</h1>
     <div class="form-group">
         <label for="exampleRole">Role</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="Role" disabled>
-    </div>
+        <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="Role" disabled> <br>
 
-    <div class="form-group">
         <label for="exampleInputEmail">Email Address</label>
-        <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="Email" disabled>
-    </div>
-    <div class="form-group">
+        <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="Email" disabled> <br>
+
         <label for="exampleFirstName">First Name</label>
-        <input type="text" class="form-control" formControlName="FirstName" placeholder="First Name">
+        <input type="text" class="form-control" formControlName="FirstName" placeholder="First Name"> <br>
 
         <small class="text-danger"
             *ngIf="authService.myProfileModel.get('FirstName').touched && authService.myProfileModel.get('FirstName').errors?.required">This
             field is mandatory.</small>
-    </div>
 
-    <div class="form-group">
         <label for="exampleLastName">Last Name</label>
-        <input type="text" class="form-control" formControlName="LastName" placeholder="Last Name">
+        <input type="text" class="form-control" formControlName="LastName" placeholder="Last Name"> <br>
         <small class="text-danger"
             *ngIf="authService.myProfileModel.get('LastName').touched && authService.myProfileModel.get('LastName').errors?.required">This
             field is mandatory.</small>
-    </div>
 
-    <div class="form-group">
         <label for="exampleLastName">User ID</label>
-        <input type="text" class="form-control" formControlName="UserId" placeholder="User ID">
+        <input type="text" class="form-control" formControlName="UserId" placeholder="User ID"> <br>
         <small class="text-danger"
             *ngIf="authService.myProfileModel.get('LastName').touched && authService.myProfileModel.get('LastName').errors?.required">This
             field is mandatory.</small>
+
+        <button type="submit" class="btn btn-primary " [disabled]="!authService.myProfileModel.valid">Update
+            Profile</button>
     </div>
-    <button type="submit" class="btn btn-primary " [disabled]="!authService.myProfileModel.valid">Update
-        Profile</button>
 </form>
