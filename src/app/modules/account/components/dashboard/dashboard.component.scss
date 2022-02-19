@@ -1,19 +1,24 @@
 
 mat-sidenav {
     width: 200px;
-    background:rgb(211, 208, 202);
+    background:#7d808f;
     color: white;
     text-align: center;
 }
 
 .toolBarCss{
-    color: rgb(37, 15, 15);
+    color: #141725;
+}
+.toolBar{
+    // background:#141725;
+    color: #141725;
+    height: 50px;
 }
 
 .content{
     font-size: 2rem;
     color: lightgray;
-    margin:5px;
+    margin:10px;
 }
 
 mat-sidenav-container{
@@ -29,6 +34,7 @@ mat-sidenav-container{
     font-size: 1rem;
     border:none;
     background-color: transparent;
+    color:black;
     margin-top: 10px;
 
     mat-icon{

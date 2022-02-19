@@ -7,6 +7,7 @@ import { DashboardComponent, } from './modules/account/components/dashboard/dash
 import { AuthGuard } from './modules/Guards/AuthGuard/auth.guard';
 import { AccountActivationComponent } from './modules/account/components/account-activation/account-activation.component';
 import { MyProfileComponent } from './modules/account/components/my-profile/my-profile.component';
+import { SelectHomeComponent } from './modules/account/components/select-home/select-home.component';
 
 const routes: Routes = [
     { path: 'accountActivation', component: AccountActivationComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
         children: [
             { path: 'home', component: HomeComponent },
             { path: 'profile', component: MyProfileComponent },
+            { path: 'select-home', component: SelectHomeComponent },
             { path: '**', component: HomeComponent },
         ],
         canActivate: [AuthGuard],

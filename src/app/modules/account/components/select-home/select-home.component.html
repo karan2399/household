@@ -1,0 +1,46 @@
+<mat-card class="homeCard">
+    <mat-card-title>Select Home</mat-card-title>
+    <mat-card-content>
+        <div [formGroup]="selectHomeForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Home: </mat-label> <br>
+                <select matNativeControl formControlName="selectHome" [(ngModel)]="selectedHome">
+                    <option [value]="h.homeName" *ngFor="let h of homes">{{h.homeName}}</option>
+                </select>
+            </mat-form-field><br>
+
+            <button mat-button color="primary" [disabled]="selectedHome == null">Submit</button>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="my-2 homeCard">
+    <mat-card-content>
+        <div>
+            <h2>
+                Current Home : {{selectedHome}}
+            </h2>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="my-2 homeCard" *ngIf="isAdmin">
+    <mat-card-title>Add a Home</mat-card-title>
+    <mat-card-content>
+        <div>
+            <form class="example-form" [formGroup]="adminForm">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Address:</mat-label>
+                    <input type="text" matInput [formControl]="address" placeholder="12 Main Street">
+                    <mat-error *ngIf="address.hasError('email') && !address.hasError('required')">
+                        Please enter a valid address
+                    </mat-error>
+                    <mat-error *ngIf="address.hasError('required')">
+                        Address is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field> <br>
+                <button mat-button color="primary" [disabled]="adminForm.invalid">Add</button>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

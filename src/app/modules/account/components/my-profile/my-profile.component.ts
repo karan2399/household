@@ -16,6 +16,7 @@ export class MyProfileComponent implements OnInit {
 
   constructor(public authService: AuthService,
     private toastrService: ToastrService) {
+    this.userDetails = this.authService.getCurrentUser();
     this.myProfileModel = new FormGroup({
       Email: new FormControl(),
       FirstName: new FormControl(),
@@ -26,20 +27,13 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
-        this.myProfileModel.get('Email').setValue(this.userDetails.email);
-        this.myProfileModel.get('FirstName').setValue(this.userDetails.firstname);
-        this.myProfileModel.get('LastName').setValue(this.userDetails.lastname);
-        this.myProfileModel.get('Role').setValue(this.userDetails.role);
-        this.myProfileModel.get('UserId').setValue(this.userDetails.userId);
+    this.myProfileModel.get('Email').setValue(this.userDetails.email);
+    this.myProfileModel.get('FirstName').setValue(this.userDetails.firstname);
+    this.myProfileModel.get('LastName').setValue(this.userDetails.lastname);
+    this.myProfileModel.get('Role').setValue(this.userDetails.role);
+    this.myProfileModel.get('UserId').setValue(this.userDetails.userId);
 
-      },
-      err => {
-        console.log(err);
-      },
-    )
+
   }
 
   onSubmit() {

@@ -44,7 +44,6 @@ export class DashboardComponent implements OnInit {
       res => {
         this.userDetails = res;
         if (this.userDetails['role'] === 'Admin') {
-          console.log(this.userDetails);
           this.authService.setRoleAdmin();
           this.isAdmin = this.authService.getRoleAdmin();
         }
@@ -78,8 +77,14 @@ export class DashboardComponent implements OnInit {
 
   goToProfile() {
     this.router.navigate(['dash/profile']);
+    this.opened = false;
   }
   goToHome() {
     this.router.navigate(['dash/home']);
+    this.opened = false;
+  }
+  goToSelectHome() {
+    this.router.navigate(['dash/select-home']);
+    this.opened = false;
   }
 }

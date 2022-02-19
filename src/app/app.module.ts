@@ -23,6 +23,8 @@ import { MyProfileComponent } from './modules/account/components/my-profile/my-p
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SelectHomeComponent } from './modules/account/components/select-home/select-home.component';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { MatInputModule } from '@angular/material/input';
     DashboardComponent,
     AccountActivationComponent,
     MyProfileComponent,
+    SelectHomeComponent
 
   ],
   imports: [
@@ -52,6 +55,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
 
     ToastrModule.forRoot({
       progressBar: true

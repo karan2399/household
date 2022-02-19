@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms'
 
 const AUTH_API = 'http://hometaskapi.local';
 
@@ -14,6 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  user: Object;
   revokeAdmin() {
     this.isAdmin = false;
   }
@@ -22,7 +22,15 @@ export class AuthService {
 
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {
-    this.setRoleAdmin();
+
+    this.getUserProfile().subscribe((res) => {
+      this.user = res;
+    })
+  }
+
+
+  getCurrentUser() {
+    return this.user;
   }
 
   //My profile model with Reactive Form Approach/Validation
@@ -43,20 +51,8 @@ export class AuthService {
     console.log('Login Object: ' + obj.email + ' ' + obj.password);
     return this.http.post(AUTH_API + '/api/login', obj, httpOptions);
   }
-  async setRoleAdmin() {
-    await this.getUserProfile().subscribe(
-      res => {
-        if (res['role'] === 'Admin') {
-          this.isAdmin = true;
-        }
-        else {
-          this.isAdmin = false;
-        }
-      },
-      err => {
-        console.log(err);
-      },
-    )
+  setRoleAdmin() {
+    this.isAdmin = true;
   }
   getRoleAdmin() {
     return this.isAdmin;
