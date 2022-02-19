@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
     events: string[] = [];
     isAdmin;
+    user;
     users = [];
     usersCutting;
     userCutting: string;
@@ -25,7 +26,18 @@ export class HomeComponent implements OnInit {
     selectedOptionWithCutting: string;
     myDate;
     constructor(private authService: AuthService, private dataRoute: ActivatedRoute) {
-        this.isAdmin = this.dataRoute.snapshot.params['isAdmin'];
+        this.user = {};
+        this.authService.getUserProfile().subscribe(
+            res => {
+                this.user = res;
+                if (res['role'] === 'Admin') {
+                    this.isAdmin = true;
+                }
+            },
+            err => {
+                console.log(err);
+            },
+        )
         setInterval(() => {
             this.myDate = Date.now();
         }, 1000);
@@ -96,6 +108,20 @@ export class HomeComponent implements OnInit {
         temp = this.users[0];
         this.users[0] = this.users[swapIndex];
         this.users[swapIndex] = temp;
+    }
+
+    cuttingSwap() {
+        let swapIndex;
+        this.usersCutting.forEach((u, index) => {
+            if (u.name == this.selectedOptionWithCutting) {
+                swapIndex = index;
+            }
+        });
+        let temp;
+        temp = this.usersCutting[0];
+        this.usersCutting[0] = this.usersCutting[swapIndex];
+        this.usersCutting[swapIndex] = temp;
+
     }
 
 }

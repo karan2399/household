@@ -14,11 +14,16 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  revokeAdmin() {
+    this.isAdmin = false;
+  }
   userLoggedIn: boolean = false;
   isAdmin: boolean = false;
 
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) {
+    this.setRoleAdmin();
+  }
 
   //My profile model with Reactive Form Approach/Validation
   myProfileModel = this.formBuilder.group({
@@ -38,8 +43,20 @@ export class AuthService {
     console.log('Login Object: ' + obj.email + ' ' + obj.password);
     return this.http.post(AUTH_API + '/api/login', obj, httpOptions);
   }
-  setRoleAdmin() {
-    this.isAdmin = true;
+  async setRoleAdmin() {
+    await this.getUserProfile().subscribe(
+      res => {
+        if (res['role'] === 'Admin') {
+          this.isAdmin = true;
+        }
+        else {
+          this.isAdmin = false;
+        }
+      },
+      err => {
+        console.log(err);
+      },
+    )
   }
   getRoleAdmin() {
     return this.isAdmin;

@@ -1,6 +1,9 @@
 <div class="grid main-content">
     <div class="row">
         <div class="col">
+            <mat-card class="homeCard my-2">
+                Welcome {{user.firstname}}
+            </mat-card>
             <mat-card class="homeCard">
                 {{myDate | date:'MMMM d, y'}}
             </mat-card>
@@ -29,13 +32,14 @@
                         <br>
                         <mat-form-field appearance="fill">
                             <mat-label>With: </mat-label> <br>
-                            <select matNativeControl [(ngModel)]="selectedOptionWithKitchen">
+                            <select matNativeControl #kitchenWithSwap [(ngModel)]="selectedOptionWithKitchen">
                                 <option [value]="u.firstName" *ngFor="let u of users">{{u.firstName}}</option>
                             </select>
                         </mat-form-field>
                         <mat-card-actions>
                             <button mat-button class="btn btn-primary m-2" (click)="kitchenDone()">DONE</button><br>
-                            <button mat-button class="btn btn-primary m-2" (click)="kitchenSwap()">SWAP</button>
+                            <button mat-button class="btn btn-primary m-2" (click)="kitchenSwap()"
+                                [disabled]="selectedOptionWithKitchen==null">SWAP</button>
                         </mat-card-actions>
 
 
@@ -90,8 +94,9 @@
                             </select>
                         </mat-form-field>
                         <mat-card-actions>
-                            <button mat-button class="btn btn-primary m-2" (click)="cuttingDone()">DONE</button><br>
-                            <button mat-button class="btn btn-primary m-2" (click)="cuttingSwap()">SWAP</button>
+                            <button mat-button class="btn btn-primary m-2" (click)="cuttingDone()">DONE</button> <br>
+                            <button mat-button class="btn btn-primary m-2" (click)="cuttingSwap()"
+                                [disabled]="selectedOptionWithCutting==null">SWAP</button>
                         </mat-card-actions>
                     </mat-card-content>
                     <div>

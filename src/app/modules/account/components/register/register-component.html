@@ -7,69 +7,70 @@
 </head>
 
 <body>
-    <div id="registerBox">
-        <form [formGroup]="registerForm" class="text-center " (submit)=" doRegsiter($event)">
+    <mat-card class="homeCard">
+        <div>
+            <form [formGroup]="registerForm" class="text-center " (submit)=" doRegsiter($event)">
 
 
-            <div class="row">
-                <h1>
-                    Register
-                </h1>
-                <div class="col">
-                    <label>First Name</label>
+                <div class="row">
+                    <h1>
+                        Register
+                    </h1>
+                    <div class="col">
+                        <label>First Name</label>
+                    </div>
+
+                    <div class="col">
+                        <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName"
+                            class="form-control" placeholder="First name">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div *ngIf="!firstName.valid && firstName.touched" class="input-error">
+                        <p>
+                            Please enter your legal First Name
+                        </p>
+                    </div>
                 </div>
 
-                <div class="col">
-                    <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName"
-                        class="form-control" placeholder="First name">
-
+                <div class="row">
+                    <div class="col">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" formControlName="lastName" id="defaultRegisterFormLastName"
+                            class="form-control" placeholder="Last name">
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div *ngIf="!firstName.valid && firstName.touched" class="input-error">
-                    <p>
-                        Please enter your legal First Name
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <label>Last Name</label>
-                </div>
-                <div class="col">
-                    <input type="text" formControlName="lastName" id="defaultRegisterFormLastName" class="form-control"
-                        placeholder="Last name">
-                </div>
-            </div>
-            <div class="row">
-                <div *ngIf="!lastName.valid && lastName.touched" class="input-error">
-                    <p>
-                        Please enter your legal Last Name
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <label>Email</label>
+                <div class="row">
+                    <div *ngIf="!lastName.valid && lastName.touched" class="input-error">
+                        <p>
+                            Please enter your legal Last Name
+                        </p>
+                    </div>
                 </div>
 
-                <div class="col">
-                    <input type="email" formControlName="email" id="defaultRegisterFormEmail" class="form-control mb-4"
-                        placeholder="E-mail">
-                </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Email</label>
+                    </div>
 
-            <div class="row">
-                <div *ngIf="!email.valid && email.touched" class="input-error">
-                    <p>
-                        Please enter your Email
-                    </p>
+                    <div class="col">
+                        <input type="email" formControlName="email" id="defaultRegisterFormEmail"
+                            class="form-control mb-4" placeholder="E-mail">
+                    </div>
                 </div>
-            </div>
 
-            <!-- <div class="row">
+                <div class="row">
+                    <div *ngIf="!email.valid && email.touched" class="input-error">
+                        <p>
+                            Please enter your Email
+                        </p>
+                    </div>
+                </div>
+
+                <!-- <div class="row">
                 <div class="col">
                     <label>Username</label>
                 </div>
@@ -89,94 +90,96 @@
             </div> -->
 
 
-            <div class="row">
-                <div class="col">
-                    <label>Password</label>
+                <div class="row">
+                    <div class="col">
+                        <label>Password</label>
+                    </div>
+
+                    <div class="col">
+                        <input type="password" formControlName="password" id="defaultRegisterFormPassword"
+                            class="form-control mb-4" placeholder="Password">
+                    </div>
+
                 </div>
 
-                <div class="col">
-                    <input type="password" formControlName="password" id="defaultRegisterFormPassword"
-                        class="form-control mb-4" placeholder="Password">
+                <div class="row">
+                    <div *ngIf="!password.valid && password.touched" class="input-error">
+                        <p>
+                            Please enter your Password
+                        </p>
+                    </div>
                 </div>
 
-            </div>
 
-            <div class="row">
-                <div *ngIf="!password.valid && password.touched" class="input-error">
-                    <p>
-                        Please enter your Password
-                    </p>
-                </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Confirm Password</label>
+                    </div>
+                    <div class="col">
+                        <input type="password" formControlName="confirmPassword" id="defaultRegisterFormConfirmPassword"
+                            class="form-control mb-4" placeholder="Confirm Password">
+                    </div>
 
-
-            <div class="row">
-                <div class="col">
-                    <label>Confirm Password</label>
-                </div>
-                <div class="col">
-                    <input type="password" formControlName="confirmPassword" id="defaultRegisterFormConfirmPassword"
-                        class="form-control mb-4" placeholder="Confirm Password">
                 </div>
 
-            </div>
-
-            <!-- <div class="row">
+                <!-- <div class="row">
                 <div *ngIf="!confirmPassword.valid && confirmPassword.touched" class="input-error">
                     <p>
                         Please enter your Username
                     </p>
                 </div>
             </div> -->
-            <div class="row">
-                <div class="col">
-                    <label>Phone Number</label>
+                <div class="row">
+                    <div class="col">
+                        <label>Phone Number</label>
+                    </div>
+
+                    <div class="col">
+                        <input type="text" formControlName="phoneNumber" id="defaultRegisterFormPhone"
+                            class="form-control mb-4" placeholder="Phone">
+                    </div>
                 </div>
 
-                <div class="col">
-                    <input type="text" formControlName="phoneNumber" id="defaultRegisterFormPhone"
-                        class="form-control mb-4" placeholder="Phone">
-                </div>
-            </div>
-
-            <div class="row">
-                <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="input-error">
-                    <p>
-                        Please enter your Phone Number
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <label>Birth Date</label>
+                <div class="row">
+                    <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="input-error">
+                        <p>
+                            Please enter your Phone Number
+                        </p>
+                    </div>
                 </div>
 
-                <div class="col">
-                    <input type="date" formControlName="birthdate" id="defaultRegisterFormBdate"
-                        class="form-control mb-4" placeholder="Birth Date">
-                </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Birth Date</label>
+                    </div>
 
-            <div class="row">
-                <div *ngIf="!birthdate.valid && birthdate.touched" class="input-error">
-                    <p>
-                        Please enter your Birth Date
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary" [disabled]="registerForm.invalid" type="submit">Register</button>
-                    &nbsp; &nbsp;
-                    <button type="button" class="btn btn-secondary" (click)="onLogin()">Login</button>
+                    <div class="col">
+                        <input type="date" formControlName="birthdate" id="defaultRegisterFormBdate"
+                            class="form-control mb-4" placeholder="Birth Date">
+                    </div>
                 </div>
 
-            </div>
-        </form>
-    </div>
+                <div class="row">
+                    <div *ngIf="!birthdate.valid && birthdate.touched" class="input-error">
+                        <p>
+                            Please enter your Birth Date
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-primary" [disabled]="registerForm.invalid"
+                            type="submit">Register</button>
+                        &nbsp; &nbsp;
+                        <button type="button" class="btn btn-secondary" (click)="onLogin()">Login</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </mat-card>
 
 
 </body>
