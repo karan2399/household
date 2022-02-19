@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms'
 
-const AUTH_API = 'http://hometaskapi.local';
+const AUTH_API = 'https://home-appapi.herokuapp.com/api/AuthManagement';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -49,7 +49,7 @@ export class AuthService {
       password: userData.password,
     }
     console.log('Login Object: ' + obj.email + ' ' + obj.password);
-    return this.http.post(AUTH_API + '/api/login', obj, httpOptions);
+    return this.http.post(AUTH_API + '/login', obj, httpOptions);
   }
   setRoleAdmin() {
     this.isAdmin = true;
@@ -107,13 +107,13 @@ export class AuthService {
 
     }
     console.log('Register Object: ' + obj);
-    return this.http.post(AUTH_API + '/api/Register',
+    return this.http.post(AUTH_API + '/Register',
       obj);
   }
 
   //ConfirmEmail:API
   confirmUserEmail(userId, code) {
-    return this.http.get(AUTH_API + '/api/ConfirmEmail', {
+    return this.http.get(AUTH_API + '/ConfirmEmail', {
       params: {
         userId: userId,
         code: code
@@ -122,7 +122,7 @@ export class AuthService {
   }
 
   getUserProfile() {
-    return this.http.get(AUTH_API + "/api/GetUsers");
+    return this.http.get(AUTH_API + "/GetUsers");
   }
 
   //SaveUserInformation : API
@@ -135,11 +135,11 @@ export class AuthService {
       UserID: this.myProfileModel.value.UserID,
     };
 
-    return this.http.post(AUTH_API + '/api/SaveUserInformation', body);
+    return this.http.post(AUTH_API + '/SaveUserInformation', body);
   }
 
   getKitchenUserList() {
-    return this.http.get(AUTH_API + '/api/getKitchenTask');
+    return this.http.get(AUTH_API + '/getKitchenTask');
   }
 
 }
