@@ -13,6 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+
   user: Object;
   revokeAdmin() {
     this.isAdmin = false;
@@ -21,26 +22,19 @@ export class AuthService {
   isAdmin: boolean = false;
 
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) {
+  constructor(private http: HttpClient) {
+  }
+  logout() {
+    this.user = {};
+    this.http.get(AUTH_API + "/SignOut");
+  }
 
+  getUser() {
     this.getUserProfile().subscribe((res) => {
       this.user = res;
-    })
-  }
-
-
-  getCurrentUser() {
+    });
     return this.user;
   }
-
-  //My profile model with Reactive Form Approach/Validation
-  myProfileModel = this.formBuilder.group({
-    FirstName: ['', Validators.required],
-    LastName: ['', Validators.required],
-    Email: ['', [Validators.email, Validators.required]],
-    Role: [''],
-    UserID: ['']
-  });
 
 
   login(userData: any): Observable<any> {
@@ -48,7 +42,8 @@ export class AuthService {
       email: userData.email,
       password: userData.password,
     }
-    console.log('Login Object: ' + obj.email + ' ' + obj.password);
+    this.getUser();
+
     return this.http.post(AUTH_API + '/Login', obj, httpOptions);
   }
   setRoleAdmin() {
@@ -122,18 +117,24 @@ export class AuthService {
   }
 
   getUserProfile() {
-    return this.http.get(AUTH_API + "/GetUsers");
+    let header = new HttpHeaders().set(
+      "Authorization",
+      localStorage.getItem("token")
+    );
+
+    return this.http.get(AUTH_API + "/GetUsers", { headers: header });
   }
 
   //SaveUserInformation : API
-  updateProfile() {
+  updateProfile(myProfileModel: any) {
     var body = {
-      FirstName: this.myProfileModel.value.FirstName,
-      LastName: this.myProfileModel.value.LastName,
-      Email: this.myProfileModel.value.Email,
-      Role: this.myProfileModel.value.Role,
-      UserID: this.myProfileModel.value.UserID,
+      FirstName: myProfileModel.value.FirstName,
+      LastName: myProfileModel.value.LastName,
+      Email: myProfileModel.value.Email,
+      Role: myProfileModel.value.Role,
+      UserID: myProfileModel.value.UserID,
     };
+
 
     return this.http.post(AUTH_API + '/SaveUserInformation', body);
   }

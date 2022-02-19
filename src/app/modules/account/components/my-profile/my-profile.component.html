@@ -11,23 +11,16 @@
             <label for="exampleFirstName">First Name</label>
             <input type="text" class="form-control" formControlName="FirstName" placeholder="First Name"> <br>
 
-            <small class="text-danger"
-                *ngIf="authService.myProfileModel.get('FirstName').touched && authService.myProfileModel.get('FirstName').errors?.required">This
-                field is mandatory.</small>
 
             <label for="exampleLastName">Last Name</label>
             <input type="text" class="form-control" formControlName="LastName" placeholder="Last Name"> <br>
-            <small class="text-danger"
-                *ngIf="authService.myProfileModel.get('LastName').touched && authService.myProfileModel.get('LastName').errors?.required">This
-                field is mandatory.</small>
+
 
             <label for="exampleLastName">User ID</label>
             <input type="text" class="form-control" formControlName="UserId" placeholder="User ID"> <br>
-            <small class="text-danger"
-                *ngIf="authService.myProfileModel.get('LastName').touched && authService.myProfileModel.get('LastName').errors?.required">This
-                field is mandatory.</small>
 
-            <button type="submit" class="btn btn-primary " [disabled]="!authService.myProfileModel.valid">Update
+
+            <button type="submit" class="btn btn-primary " [disabled]="!myProfileModel.valid">Update
                 Profile</button>
         </div>
 

@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
     doLogin(e) {
         e.preventDefault();
         this.authService.login(this.loginForm.value).subscribe(res => {
-            console.log(res);
+            localStorage.setItem("token", res["token"]);
+            this.authService.getUser();
             if (res.success == true) {
                 localStorage.setItem('token', res.token);  //res.token
                 this.authService.userLoggedIn = true;
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
                 });
                 this.router.navigate(['/dash']);
             }
-                
+
 
         });
     }

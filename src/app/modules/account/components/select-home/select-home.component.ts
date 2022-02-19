@@ -25,7 +25,7 @@ export class SelectHomeComponent implements OnInit {
     this.adminForm = new FormGroup({
       address: new FormControl('', [Validators.required]),
     })
-    this.user = this.authService.getCurrentUser();
+    this.user = this.authService.getUser();
     if (this.user['role'] === 'Admin') {
       this.isAdmin = true;
     }

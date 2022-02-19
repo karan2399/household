@@ -68,6 +68,7 @@ export class DashboardComponent implements OnInit {
   }
   onLogout() {
     localStorage.removeItem('token');
+    this.authService.logout();
     this.router.navigate(['/login']);
     this.snackBar.open('You are now logged out', 'close', {
       duration: 3000,
