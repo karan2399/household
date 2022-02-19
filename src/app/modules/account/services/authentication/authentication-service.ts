@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms'
 
-const AUTH_API = 'https://home-appapi.herokuapp.com/api/AuthManagement';
+const AUTH_API = 'https://home-appapi.herokuapp.com/api';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -49,7 +49,7 @@ export class AuthService {
       password: userData.password,
     }
     console.log('Login Object: ' + obj.email + ' ' + obj.password);
-    return this.http.post(AUTH_API + '/login', obj, httpOptions);
+    return this.http.post(AUTH_API + '/Login', obj, httpOptions);
   }
   setRoleAdmin() {
     this.isAdmin = true;
@@ -141,5 +141,4 @@ export class AuthService {
   getKitchenUserList() {
     return this.http.get(AUTH_API + '/getKitchenTask');
   }
-
 }
