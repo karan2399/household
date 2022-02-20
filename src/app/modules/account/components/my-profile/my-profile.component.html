@@ -3,21 +3,23 @@
         <h1>Your Profile</h1>
         <div class="form-group">
             <label for="exampleRole">Role</label>
-            <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="Role" disabled> <br>
+            <input type="text" class="form-control" aria-describedby="emailHelp" disabled formControlName="Role"
+                disabled> <br>
 
             <label for="exampleInputEmail">Email Address</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="Email" disabled> <br>
+            <input type="email" class="form-control" aria-describedby="emailHelp" disabled formControlName="Email"
+                disabled> <br>
 
             <label for="exampleFirstName">First Name</label>
-            <input type="text" class="form-control" formControlName="FirstName" placeholder="First Name"> <br>
+            <input type="text" class="form-control" formControlName="FirstName" disabled placeholder="First Name"> <br>
 
 
             <label for="exampleLastName">Last Name</label>
-            <input type="text" class="form-control" formControlName="LastName" placeholder="Last Name"> <br>
+            <input type="text" class="form-control" formControlName="LastName" disabled placeholder="Last Name"> <br>
 
 
             <label for="exampleLastName">User ID</label>
-            <input type="text" class="form-control" formControlName="UserId" placeholder="User ID"> <br>
+            <input type="text" class="form-control" formControlName="UserId" disabled placeholder="User ID"> <br>
 
 
             <button type="submit" class="btn btn-primary " [disabled]="!myProfileModel.valid">Update
