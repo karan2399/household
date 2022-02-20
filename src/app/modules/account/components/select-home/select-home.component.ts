@@ -49,6 +49,7 @@ export class SelectHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectHome = this.selectHomeForm.get('selectHome');
+    this.address = this.adminForm.get('address');
 
   }
 
