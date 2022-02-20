@@ -8,26 +8,26 @@ import { AuthService } from '../../account/services/authentication/authenticatio
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
     // route: ActivatedRouteSnapshot,
     // state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // // if (!this.authService.roleMatch()) {
     // //   console.log("Login Called");
-      
+
     // //   this.router.navigate(['/login']); // go to login if not authenticated
     // //     return false;
     // //   }
     // // return true;
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem('token') != null){
+    if (localStorage.getItem('token') != null) {
       let roles = next.data['permittedRoles'] as Array<string>;
-      if(roles){
-        if(this.authService.roleMatch(roles)) return true;
-        else{
-          this.router.navigate(['/forbidden']);
+      if (roles) {
+        if (this.authService.roleMatch(roles)) return true;
+        else {
+          this.router.navigate(['/login']);
           return false;
         }
       }
@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/user/login']);
       return false;
     }
-    
+
   }
-  
+
 }
