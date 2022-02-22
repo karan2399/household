@@ -15,11 +15,12 @@
 
 
             <label for="exampleLastName">Last Name</label>
-            <input type="text" class="form-control" formControlName="LastName" disabled placeholder="Last Name"> <br>
+            <input type="text" class="form-control" formControlName="LastName" placeholder="Last Name"> <br>
 
 
             <label for="exampleLastName">User ID</label>
-            <input type="text" class="form-control" formControlName="UserId" disabled placeholder="User ID"> <br>
+            <input type="text" class="form-control" formControlName="UserId" disabled disabled placeholder="User ID">
+            <br>
 
 
             <button type="submit" class="btn btn-primary " [disabled]="!myProfileModel.valid">Update
