@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
         e.preventDefault();
         this.authService.login(this.loginForm.value).subscribe(res => {
             localStorage.setItem("token", res["token"]);
-            this.authService.getUser();
             if (res.success == true) {
                 localStorage.setItem('token', res.token);  //res.token
                 this.authService.userLoggedIn = true;
@@ -47,12 +46,16 @@ export class LoginComponent implements OnInit {
                     duration: 3000,
                     panelClass: 'my-custom-snackbar',
                 });
+                this.authService.getUserProfile().subscribe(res => {
+                    this.authService.setUser(res);
+                })
                 this.router.navigate(['/dash']);
             }
 
 
         });
     }
+
 
     onRegisterClick() {
         this.router.navigate(['/register']);

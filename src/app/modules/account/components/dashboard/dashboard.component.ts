@@ -28,30 +28,19 @@ export class DashboardComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router) {
-    // const dialogRef = this.dialog.open(DialogSelectHomeDialog, {
-    //   width: '250px',
-    //   data: { home: this.home, },
-    // });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The select home dialog was closed');
-    //   this.home = result;
-    // });
+    setTimeout(function () {
+      this.userDetails = this.authService.getUser();
+      if (this.userDetails['role'] === 'Admin') {
+        this.authService.setRoleAdmin();
+        this.isAdmin = this.authService.getRoleAdmin();
+      }
+    }, 3000)
   }
 
   ngOnInit() {
-    this.authService.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
-        if (this.userDetails['role'] === 'Admin') {
-          this.authService.setRoleAdmin();
-          this.isAdmin = this.authService.getRoleAdmin();
-        }
-      },
-      err => {
-        console.log(err);
-      },
-    )
+
+
   }
 
   ngAfterViewInit() {

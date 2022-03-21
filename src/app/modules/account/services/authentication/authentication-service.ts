@@ -13,8 +13,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  setUser(res: Object) {
+    this.user = res;
+  }
 
-  user: Object;
+  public user: Object;
   revokeAdmin() {
     this.isAdmin = false;
   }
@@ -23,16 +26,15 @@ export class AuthService {
 
 
   constructor(private http: HttpClient) {
+
   }
   logout() {
     this.user = {};
+    this.isAdmin = false;
     this.http.get(AUTH_API + "/SignOut");
   }
 
   getUser() {
-    this.getUserProfile().subscribe((res) => {
-      this.user = res;
-    });
     return this.user;
   }
 
@@ -42,8 +44,6 @@ export class AuthService {
       email: userData.email,
       password: userData.password,
     }
-    this.getUser();
-
     return this.http.post(AUTH_API + '/Login', obj, httpOptions);
   }
   setRoleAdmin() {

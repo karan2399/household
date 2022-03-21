@@ -28,12 +28,12 @@
     <mat-card-title>Add a Home</mat-card-title>
     <mat-card-content>
         <div>
-            <form class="example-form" [formGroup]="adminForm">
+            <form class="example-form" [formGroup]="adminForm" (submit)="addHome()">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Address:</mat-label>
                     <input type="text" matInput [formControl]="address" placeholder="12 Main Street">
                 </mat-form-field> <br>
-                <button mat-button color="primary" [disabled]="adminForm.invalid">Add</button>
+                <button mat-button type="submit" color="primary" [disabled]="adminForm.invalid">Add</button>
             </form>
         </div>
     </mat-card-content>

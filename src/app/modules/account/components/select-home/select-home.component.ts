@@ -53,4 +53,12 @@ export class SelectHomeComponent implements OnInit {
 
   }
 
+  addHome() {
+    console.log();
+    this.homes.push({
+      homeId: this.homes[this.homes.length - 1].homeId + 1,
+      homeName: this.adminForm.value.address
+    })
+  }
+
 }

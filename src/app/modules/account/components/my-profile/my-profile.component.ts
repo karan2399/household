@@ -37,7 +37,7 @@ export class MyProfileComponent implements OnInit {
     this.Role = this.myProfileModel.get('Role');
     this.UserId = this.myProfileModel.get('UserId');
 
-    this.Email.setValue(this.userDetails.firstname);
+    this.Email.setValue(this.userDetails.email);
 
     this.FirstName.setValue(this.userDetails.firstname);
 
@@ -45,7 +45,7 @@ export class MyProfileComponent implements OnInit {
 
     this.Role.setValue(this.userDetails.role);
 
-    this.UserId.setValue(this.userDetails.userId);
+    this.UserId.setValue("************" + this.userDetails.userId.substring(2, 10) + "************");
 
   }
   onSubmit() {
