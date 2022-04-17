@@ -95,10 +95,11 @@ export class HomeComponent implements OnInit {
         this.userKitchen = this.users[0].firstName;
         this.selectedOptionSwapKitchen = this.users[0].firstName;
         // Post New Updated User List
-        this.authService.postNewKitchenUsersList(this.users).subscribe(res => {
-            console.log(res);
-
-        });
+        for (let u of this.users) {
+            this.authService.postNewKitchenUsersList(u).subscribe(res => {
+                console.log(res);
+            });
+        }
     }
     kitchenSwap() {
         let swapIndex;

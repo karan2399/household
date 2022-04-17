@@ -42,6 +42,10 @@ export class SelectHomeComponent implements OnInit {
       {
         homeId: 3,
         homeName: '29 Halesia Drive',
+      },
+      {
+        homeId: 4,
+        homeName: '1030 Kipling Avenue',
       }
     ];
 

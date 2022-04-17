@@ -14,7 +14,7 @@ const httpOptions = {
 export class AuthService {
   postNewKitchenUsersList //SaveUserInformation : API
     (users: any[]) {
-    return this.http.put(AUTH_API + '/UpdateTaskList', users);
+    return this.http.post(AUTH_API + '/updatetasks', users);
   }
 
 
