@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms'
 
 const AUTH_API = 'https://home-appapi.herokuapp.com/api';
 
@@ -13,6 +12,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  postNewKitchenUsersList //SaveUserInformation : API
+    (users: any[]) {
+    return this.http.put(AUTH_API + '/UpdateTaskList', users);
+  }
+
+
   setUser(res: Object) {
     this.user = res;
   }
@@ -26,7 +31,6 @@ export class AuthService {
 
 
   constructor(private http: HttpClient) {
-
   }
   logout() {
     this.user = {};

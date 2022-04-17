@@ -19,9 +19,12 @@ export class MyProfileComponent implements OnInit {
   Role: AbstractControl;
   UserId: AbstractControl;
 
-  constructor(public authService: AuthService,
-    private toastrService: ToastrService) {
-    this.userDetails = this.authService.getUser();
+  constructor(public authService: AuthService) {
+
+    setTimeout(function () {
+      this.userDetails = this.authService.getUser();
+    }, 3000)
+
     this.myProfileModel = new FormGroup({
       Email: new FormControl(),
       FirstName: new FormControl(),
