@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from '../../services/authentication/authentication-service';
@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'home-component',
     templateUrl: 'home-component.html',
-    styleUrls: ['home-component.scss']
+    styleUrls: ['home-component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
     events: string[] = [];
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit {
     selectedOptionSwapCutting: string;
     selectedOptionWithCutting: string;
     myDate;
-    constructor(private authService: AuthService, private dataRoute: ActivatedRoute) {
+    constructor(private authService: AuthService, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
+    ) {
         this.user = {};
         this.authService.getUserProfile().subscribe(
             res => {
@@ -81,6 +83,9 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
 
     }
+    ngAfterContentChecked(): void {
+        this.cdr.detectChanges();
+    }
 
     cuttingDone() {
         this.usersCutting.push(this.usersCutting.shift());
@@ -91,15 +96,51 @@ export class HomeComponent implements OnInit {
     }
 
     kitchenDone() {
-        this.users.push(this.users.shift());
-        this.userKitchen = this.users[0].firstName;
-        this.selectedOptionSwapKitchen = this.users[0].firstName;
+        // this.users.push(this.users.shift());
+        // this.userKitchen = this.users[0].firstName;
+        // this.selectedOptionSwapKitchen = this.users[0].firstName;
+
+
+        // console.log(this.users);
+        let nUsers = [];
+        for (let userI of this.users) {
+            let u = {
+                email: userI.email,
+                firstName: userI.firstName,
+                id: null,
+                lastName: userI.lastName,
+                task_Description: null,
+                task_id: (userI.task_id - 1)
+            }
+            if (u.task_id === 0) {
+                u = {
+                    email: userI.email,
+                    firstName: userI.firstName,
+                    id: null,
+                    lastName: userI.lastName,
+                    task_Description: null,
+                    task_id: this.users.length
+                }
+            }
+            nUsers.push(u);
+        }
+        this.users = nUsers.slice(0);
+
+
+        console.log(this.users);
+
         // Post New Updated User List
         for (let u of this.users) {
             this.authService.postNewKitchenUsersList(u).subscribe(res => {
-                console.log(res);
+                this.authService.getKitchenUserList().subscribe((uList: any) => {
+                    this.users = uList;
+                    this.allocateKitchenTask();
+                    this.allocateCuttingTask();
+                });
             });
         }
+
+
     }
     kitchenSwap() {
         let swapIndex;
