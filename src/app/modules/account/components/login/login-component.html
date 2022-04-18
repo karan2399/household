@@ -14,13 +14,13 @@
             <form [formGroup]="loginForm" class="text-center" (submit)="doLogin($event)">
 
 
-                <div class="form-row mb-4">
+                <div class="form-row mb-2">
                     <h1>
                         Login
                     </h1>
 
                 </div>
-                <div class="form-row mb-4">
+                <div class="form-row mb-2">
                     <div class="col">
                         <label>Email</label>
                     </div>
@@ -40,14 +40,14 @@
 
 
 
-                <div class="form-row mb-4">
+                <div class="form-row mb-2">
                     <div class="col">
                         <label>Password</label>
                     </div>
 
                     <div class="col">
                         <input type="password" formControlName="password" id="defaultLoginFormPassword"
-                            class="form-control mb-4" placeholder="Password">
+                            class="form-control mb-2" placeholder="Password">
                     </div>
 
                 </div>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <div class="form-row mb-4">
+                <div class="form-row mb-2">
                     <div class="col">
 
                         <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
