@@ -146,4 +146,15 @@ export class AuthService {
   getKitchenUserList() {
     return this.http.get(AUTH_API + '/getKitchenTask');
   }
+
+  // Get Homes from Webservice
+  getHomes() {
+    return this.http.get(AUTH_API + '/getHome');
+  }
+
+
+  // Adding a new Home (Admin Only)
+  addHome(home) {
+    return this.http.post(AUTH_API + '/RegisterHome', home);
+  }
 }

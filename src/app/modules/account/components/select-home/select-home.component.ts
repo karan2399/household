@@ -9,7 +9,7 @@ import { AuthService } from '../../services/authentication/authentication-servic
 })
 export class SelectHomeComponent implements OnInit {
 
-  homes = [];
+  homes;
   selectHome: AbstractControl;
   selectedHome;
   selectHomeForm: FormGroup;
@@ -25,29 +25,39 @@ export class SelectHomeComponent implements OnInit {
     this.adminForm = new FormGroup({
       address: new FormControl('', [Validators.required]),
     })
-    this.user = this.authService.getUser();
-    if (this.user['role'] === 'Admin') {
-      this.isAdmin = true;
-    }
+    this.authService.getUserProfile().subscribe(
+      res => {
+        this.user = res;
+        if (res['role'] === 'Admin') {
+          this.isAdmin = true;
+        }
+      },
+      err => {
+        console.log(err);
+      },
+    )
 
-    this.homes = [
-      {
-        homeId: 1,
-        homeName: '22 Ridware Crescent',
-      },
-      {
-        homeId: 2,
-        homeName: '302 Silverstone Drive',
-      },
-      {
-        homeId: 3,
-        homeName: '29 Halesia Drive',
-      },
-      {
-        homeId: 4,
-        homeName: '1030 Kipling Avenue',
-      }
-    ];
+    this.authService.getHomes().subscribe(res => {
+      this.homes = res;
+    })
+    // [
+    //   {
+    //     homeId: 1,
+    //     homeName: '22 Ridware Crescent',
+    //   },
+    //   {
+    //     homeId: 2,
+    //     homeName: '302 Silverstone Drive',
+    //   },
+    //   {
+    //     homeId: 3,
+    //     homeName: '29 Halesia Drive',
+    //   },
+    //   {
+    //     homeId: 4,
+    //     homeName: '1030 Kipling Avenue',
+    //   }
+    // ];
 
   }
 
@@ -58,10 +68,13 @@ export class SelectHomeComponent implements OnInit {
   }
 
   addHome() {
-    console.log();
-    this.homes.push({
-      homeId: this.homes[this.homes.length - 1].homeId + 1,
-      homeName: this.adminForm.value.address
+    let home = {
+      home_Name: this.adminForm.value.address,
+    }
+    this.authService.addHome(home).subscribe(res => {
+      this.authService.getHomes().subscribe(res => {
+        this.homes = res;
+      })
     })
   }
 
