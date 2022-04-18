@@ -143,16 +143,67 @@ export class HomeComponent implements OnInit {
 
     }
     kitchenSwap() {
+        // let swapIndex;
+        // this.users.forEach((u, index) => {
+        //     if (u.firstName == this.selectedOptionWithKitchen) {
+        //         swapIndex = index;
+        //     }
+        // });
+        // let temp;
+        // temp = this.users[0];
+        // this.users[0] = this.users[swapIndex];
+        // this.users[swapIndex] = temp;
+
+        console.log(this.users);
         let swapIndex;
         this.users.forEach((u, index) => {
             if (u.firstName == this.selectedOptionWithKitchen) {
                 swapIndex = index;
             }
         });
-        let temp;
-        temp = this.users[0];
-        this.users[0] = this.users[swapIndex];
-        this.users[swapIndex] = temp;
+
+        let u1 = {
+            email: this.users[0].email,
+            firstName: this.users[0].firstName,
+            id: null,
+            lastName: this.users[0].lastName,
+            task_Description: null,
+            task_id: (this.users[swapIndex].task_id)
+        }
+
+        let u2 = {
+            email: this.users[swapIndex].email,
+            firstName: this.users[swapIndex].firstName,
+            id: null,
+            lastName: this.users[swapIndex].lastName,
+            task_Description: null,
+            task_id: (this.users[0].task_id)
+        }
+        let uSwapList: Object[] = [];
+        uSwapList.push(u1);
+        uSwapList.push(u2);
+
+        console.log(uSwapList);
+
+
+        // for (let uSwap in uSwapList) {
+        this.authService.postNewKitchenUsersList(u1).subscribe(res => {
+            this.authService.getKitchenUserList().subscribe((uList: any) => {
+                this.users = uList;
+                this.allocateKitchenTask();
+                this.allocateCuttingTask();
+            });
+        });
+        this.authService.postNewKitchenUsersList(u2).subscribe(res => {
+            this.authService.getKitchenUserList().subscribe((uList: any) => {
+                this.users = uList;
+                this.allocateKitchenTask();
+                this.allocateCuttingTask();
+            });
+        });
+        // }
+
+        // }
     }
 
     cuttingSwap() {
@@ -166,7 +217,6 @@ export class HomeComponent implements OnInit {
         temp = this.usersCutting[0];
         this.usersCutting[0] = this.usersCutting[swapIndex];
         this.usersCutting[swapIndex] = temp;
-
     }
 
 }

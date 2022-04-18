@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogSelectHomeDialog } from '../../dialogs/selectHome/dialog-select-home';
 import { AuthService } from '../../services/authentication/authentication-service';
+import { timer } from 'rxjs';
 export interface DialogSelectData {
   home: string;
 
@@ -29,13 +30,13 @@ export class DashboardComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router) {
 
-    setTimeout(function () {
-      this.userDetails = this.authService.getUser();
-      if (this.userDetails['role'] === 'Admin') {
-        this.authService.setRoleAdmin();
-        this.isAdmin = this.authService.getRoleAdmin();
-      }
-    }, 3000)
+    // setTimeout(function () {
+    //   this.userDetails = this.authService.getUser();
+    //   if (this.userDetails['role'] === 'Admin') {
+    //     this.authService.setRoleAdmin();
+    //     this.isAdmin = this.authService.getRoleAdmin();
+    //   }
+    // }, 3000)
   }
 
   ngOnInit() {

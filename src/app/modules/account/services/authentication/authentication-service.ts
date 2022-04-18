@@ -13,8 +13,8 @@ const httpOptions = {
 })
 export class AuthService {
   postNewKitchenUsersList //SaveUserInformation : API
-    (users: any[]) {
-    return this.http.post(AUTH_API + '/updatetasks', users);
+    (user: any) {
+    return this.http.post(AUTH_API + '/updatetasks', user);
   }
 
 
