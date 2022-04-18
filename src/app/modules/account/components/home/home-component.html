@@ -64,7 +64,7 @@
 
 
             </div>
-            <div class="cuttingBox  col">
+            <div class="cuttingBox  col" *ngIf="false">
 
                 <mat-card class="homeCard">
                     <mat-card-subtitle>Daily</mat-card-subtitle>
@@ -103,6 +103,58 @@
 
                         <mat-card class="homeCard">
                             <mat-card-title>Cutting</mat-card-title>
+                            <mat-card-content>
+                                <mat-list role="list" *ngFor="let u of usersCutting">
+                                    <div class="userListStyle">
+                                        <mat-list-item role="listitem">{{u.name}}</mat-list-item>
+                                    </div>
+                                </mat-list>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </mat-card>
+
+            </div>
+
+            <div class="weeklyBox  col">
+
+                <mat-card class="homeCard">
+                    <mat-card-subtitle>Weekly</mat-card-subtitle>
+                    <mat-card-title>Placeholder</mat-card-title>
+                    <mat-card-content>
+                        Placeholder
+                    </mat-card-content>
+
+                    <!-- <mat-card-actions>
+                        <button mat-button class="btn btn-primary" *ngIf="isAdmin" (click)="cuttingDone()"> DONE
+                        </button>
+                        <button mat-button class="btn btn-primary mx-2" *ngIf="isAdmin"
+                            (click)="cuttingSwap()">SWAP</button>
+                    </mat-card-actions> -->
+                    <mat-card-content *ngIf="isAdmin">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Swap: </mat-label> <br>
+                            <select matNativeControl [(ngModel)]="selectedOptionSwapCutting" disabled>
+                                <option [value]="u.name" *ngFor="let u of usersCutting">{{u.name}}</option>
+                            </select>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>With: </mat-label> <br>
+                            <select matNativeControl [(ngModel)]="selectedOptionWithCutting">
+                                <option [value]="u.name" *ngFor="let u of usersCutting">{{u.name}}</option>
+                            </select>
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <button mat-button class="btn btn-primary m-2" (click)="cuttingDone()">DONE</button> <br>
+                            <button mat-button class="btn btn-primary m-2" (click)="cuttingSwap()"
+                                [disabled]="selectedOptionWithCutting==null">SWAP</button>
+                        </mat-card-actions>
+                    </mat-card-content>
+                    <div>
+
+                        <mat-card class="homeCard">
+                            <mat-card-title>Placeholder</mat-card-title>
                             <mat-card-content>
                                 <mat-list role="list" *ngFor="let u of usersCutting">
                                     <div class="userListStyle">
