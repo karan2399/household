@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     userCutting: string;
     userKitchen: string;
     userWeekly: string;
+    comingSunday: Date;
     selectedOptionSwapKitchen: string;
     selectedOptionWithKitchen: string;
 
@@ -33,6 +34,8 @@ export class HomeComponent implements OnInit {
     myDate;
     constructor(private authService: AuthService, private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
     ) {
+        this.comingSunday = new Date();
+        this.comingSunday.setDate(this.comingSunday.getDate() + (((1 + 6 - this.comingSunday.getDay()) % 7) || 7));
         this.user = {};
         this.authService.getUserProfile().subscribe(
             res => {

@@ -120,7 +120,9 @@
 
                 <mat-card class="homeCard">
                     <mat-card-subtitle>Weekly</mat-card-subtitle>
-                    <mat-card-title>Placeholder</mat-card-title>
+                    <mat-card-title>
+                        {{comingSunday.getMonth() }}/{{comingSunday.getDate()}}
+                    </mat-card-title>
                     <mat-card-content>
                         {{userWeekly}}
                     </mat-card-content>
