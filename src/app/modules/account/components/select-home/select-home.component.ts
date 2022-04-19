@@ -16,7 +16,9 @@ export class SelectHomeComponent implements OnInit {
   adminForm: FormGroup;
   address: AbstractControl;
   user;
+  currentHome;
   isAdmin: boolean = false;
+  home;
   constructor(private authService: AuthService) {
 
     this.selectHomeForm = new FormGroup({
@@ -28,6 +30,10 @@ export class SelectHomeComponent implements OnInit {
     this.authService.getUserProfile().subscribe(
       res => {
         this.user = res;
+        this.authService.getHomeForUser(this.user.userId).subscribe(res => {
+          this.home = res;
+          this.currentHome = this.home[0].home_name;
+        })
         if (res['role'] === 'Admin') {
           this.isAdmin = true;
         }
@@ -76,6 +82,23 @@ export class SelectHomeComponent implements OnInit {
         this.homes = res;
       })
     })
+  }
+  homeChanged(e) {
+    this.home = this.homes.filter((h) => {
+      return h.home_id === +e.target.value;
+    })
+  }
+  addHomeToUser() {
+    let obj = {
+      home_id: this.home[0].home_id,
+      home_name: this.home[0].home_Name,
+      id: this.user.userId,
+      firstName: this.user.firstname,
+      lastName: this.user.lastname
+    }
+    this.authService.addHomeToUser(obj).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }

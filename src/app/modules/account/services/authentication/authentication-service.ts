@@ -13,6 +13,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  userLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   postNewKitchenUsersList //SaveUserInformation : API
     (user: any) {
     return this.http.post(AUTH_API + '/updatetasks', user);
@@ -27,8 +29,7 @@ export class AuthService {
   revokeAdmin() {
     this.isAdmin = false;
   }
-  userLoggedIn: boolean = false;
-  isAdmin: boolean = false;
+
 
 
   constructor(private http: HttpClient) {
@@ -160,8 +161,20 @@ export class AuthService {
     return this.http.post(AUTH_API + '/RegisterHome', home);
   }
 
+  // Add Home to user
+  addHomeToUser(obj) {
+    return this.http.post(AUTH_API + '/AddHomeUser', obj);
+  }
+
+  // Get Home for particular User
+  getHomeForUser(id) {
+    return this.http.get(AUTH_API + '/homeusers?Id=' + id);
+  }
+
   // Get Weekly Task List
   getWeeklyTaskList() {
     return this.http.get(AUTH_API + '/GetWeeklyTaskList');
   }
+
+
 }

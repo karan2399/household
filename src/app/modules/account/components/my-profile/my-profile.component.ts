@@ -12,6 +12,7 @@ export class MyProfileComponent implements OnInit {
 
   //Anonymous object to store the response.
   userDetails;
+  home;
   myProfileModel: FormGroup;
 
   constructor(public authService: AuthService,
@@ -25,19 +26,25 @@ export class MyProfileComponent implements OnInit {
       bdate: new FormControl(),
       currentHome: new FormControl(),
     });
+
   }
 
   ngOnInit() {
     this.authService.getUserProfile().subscribe(
       res => {
         this.userDetails = res;
+        this.authService.getHomeForUser(this.userDetails.userId).subscribe(res => {
+          this.home = res;
+          this.myProfileModel.get('currentHome').setValue(this.home[0].home_name);
+        })
+
         this.myProfileModel.get('Email').setValue(this.userDetails.email);
         this.myProfileModel.get('FirstName').setValue(this.userDetails.firstname);
         this.myProfileModel.get('LastName').setValue(this.userDetails.lastname);
         this.myProfileModel.get('Role').setValue(this.userDetails.role);
         this.myProfileModel.get('UserId').setValue(this.userDetails.userId);
         this.myProfileModel.get('bdate').setValue(this.userDetails.birthdate);
-        this.myProfileModel.get('currentHome').setValue('');
+
       },
       err => {
         console.log(err);
