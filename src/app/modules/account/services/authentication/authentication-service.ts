@@ -13,6 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+
   userLoggedIn: boolean = false;
   isAdmin: boolean = false;
   postNewKitchenUsersList //SaveUserInformation : API
@@ -123,6 +124,7 @@ export class AuthService {
     });
   }
 
+  // Get User Data from Webservice
   getUserProfile() {
     let header = new HttpHeaders().set(
       "Authorization",
@@ -169,6 +171,16 @@ export class AuthService {
   // Get Home for particular User
   getHomeForUser(id) {
     return this.http.get(AUTH_API + '/homeusers?Id=' + id);
+  }
+
+  // Check if home is added to a user or not
+  checkHomeAdded(id) {
+    return this.http.post(AUTH_API + '/getUseridforhome', id);
+  }
+
+  // Update Home for a User
+  updateHomeToUser(obj) {
+    return this.http.post(AUTH_API + '/UpdateHomeUser', obj)
   }
 
   // Get Weekly Task List

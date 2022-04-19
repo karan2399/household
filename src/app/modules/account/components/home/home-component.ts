@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     selectedOptionSwapCutting: string;
     selectedOptionWithCutting: string;
     myDate;
+    home;
     constructor(private authService: AuthService, private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
     ) {
         this.comingSunday = new Date();
@@ -42,6 +43,15 @@ export class HomeComponent implements OnInit {
                 this.user = res;
                 if (res['role'] === 'Admin') {
                     this.isAdmin = true;
+                    this.authService.getHomeForUser(this.user.userId).subscribe(res => {
+                        if (res.toString()[0] !== undefined) {
+                            this.home = res[0].home_name;
+                        }
+                        else {
+                            this.home = null;
+                        }
+
+                    })
                 }
             },
             err => {
@@ -143,9 +153,6 @@ export class HomeComponent implements OnInit {
         }
         this.users = nUsers.slice(0);
 
-
-        console.log(this.users);
-
         // Post New Updated User List
         for (let u of this.users) {
             this.authService.postNewKitchenUsersList(u).subscribe(res => {
@@ -171,7 +178,6 @@ export class HomeComponent implements OnInit {
         // this.users[0] = this.users[swapIndex];
         // this.users[swapIndex] = temp;
 
-        console.log(this.users);
         let swapIndex;
         this.users.forEach((u, index) => {
             if (u.firstName == this.selectedOptionWithKitchen) {
@@ -200,7 +206,6 @@ export class HomeComponent implements OnInit {
         uSwapList.push(u1);
         uSwapList.push(u2);
 
-        console.log(uSwapList);
 
 
         // for (let uSwap in uSwapList) {

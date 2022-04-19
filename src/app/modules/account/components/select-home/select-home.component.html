@@ -2,7 +2,7 @@
     <mat-card-title>Select Home</mat-card-title>
     <mat-card-content>
         <div>
-            <form [formGroup]="selectHomeForm" (submit)="addHomeToUser()">
+            <form [formGroup]="selectHomeForm">
                 <mat-form-field appearance="fill">
                     <mat-label>Home: </mat-label> <br>
                     <select matNativeControl formControlName="selectHome" [(ngModel)]="selectedHome"
@@ -10,8 +10,11 @@
                         <option [value]="h.home_id" *ngFor="let h of homes">{{h.home_Name}}</option>
                     </select>
                 </mat-form-field><br>
+                <button mat-button color="primary" type="button" (click)="addHomeToUser()" *ngIf="!home"
+                    [disabled]="selectedHome == null">Submit</button>
+                <button mat-button type="button" color="primary" *ngIf="home" [disabled]="!selectedHome"
+                    (click)="updateHome()">Update</button>
 
-                <button mat-button color="primary" type="submit" [disabled]="selectedHome == null">Submit</button>
             </form>
         </div>
     </mat-card-content>
@@ -37,6 +40,7 @@
                     <input type="text" matInput [formControl]="address" placeholder="12 Main Street">
                 </mat-form-field> <br>
                 <button mat-button type="submit" color="primary" [disabled]="adminForm.invalid">Add</button>
+
             </form>
         </div>
     </mat-card-content>

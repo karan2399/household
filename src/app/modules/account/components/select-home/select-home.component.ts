@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/authentication/authentication-service';
 
 @Component({
@@ -19,7 +21,8 @@ export class SelectHomeComponent implements OnInit {
   currentHome;
   isAdmin: boolean = false;
   home;
-  constructor(private authService: AuthService) {
+  cHome;
+  constructor(private authService: AuthService, private router: Router, private snackbar: MatSnackBar) {
 
     this.selectHomeForm = new FormGroup({
       selectHome: new FormControl(),
@@ -31,8 +34,12 @@ export class SelectHomeComponent implements OnInit {
       res => {
         this.user = res;
         this.authService.getHomeForUser(this.user.userId).subscribe(res => {
-          this.home = res;
-          this.currentHome = this.home[0].home_name;
+          if (res.toString()[0] !== undefined) {
+            this.home = res;
+            this.currentHome = this.home[0].home_name;
+            this.selectedHome = this.home[0].home_id;
+          }
+
         })
         if (res['role'] === 'Admin') {
           this.isAdmin = true;
@@ -84,20 +91,43 @@ export class SelectHomeComponent implements OnInit {
     })
   }
   homeChanged(e) {
-    this.home = this.homes.filter((h) => {
+    // this.selectedHome = this.homes.filter((h) => {
+    //   return h.home_id === +e.target.value;
+    // })[0].home_Name;
+    this.cHome = this.homes.filter((h) => {
       return h.home_id === +e.target.value;
-    })
+    })[0];
   }
   addHomeToUser() {
     let obj = {
-      home_id: this.home[0].home_id,
-      home_name: this.home[0].home_Name,
+      home_id: this.cHome.home_id,
+      home_name: this.cHome.home_Name,
       id: this.user.userId,
       firstName: this.user.firstname,
       lastName: this.user.lastname
     }
+
     this.authService.addHomeToUser(obj).subscribe(res => {
       console.log(res);
+    });
+  }
+  updateHome() {
+    let obj = {
+      home_id: this.cHome.home_id,
+      home_name: this.cHome.home_Name,
+      id: this.user.userId,
+      firstName: this.user.firstname,
+      lastName: this.user.lastname,
+    }
+    this.authService.updateHomeToUser(obj).subscribe(res => {
+      console.log(res[0].home_id);
+
+      this.currentHome = res[0].home_name;
+    });
+
+    this.snackbar.open('You have succesfully updated your home', 'close', {
+      duration: 3000,
+      panelClass: 'my-custom-snackbar',
     });
   }
 

@@ -31,6 +31,8 @@ export class DashboardComponent implements OnInit {
     private router: Router) {
     this.jwtHelperService = new JwtHelperService();
 
+
+
     let intervalSession = setInterval(() => {
       if (this.jwtHelperService.isTokenExpired(localStorage.getItem('token'))) {
         this.snackBar.open('You are now logged out due to SESSSION TIMEOUT', 'close', {
@@ -56,6 +58,23 @@ export class DashboardComponent implements OnInit {
     if (localStorage.getItem('token') === null) {
       this.router.navigate(['/login']);
     }
+    this.authService.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res;
+
+        this.authService.checkHomeAdded(this.userDetails.userId).subscribe(res => {
+          console.log(res);
+
+          // if (res.toString() === '') {
+          //   this.snackBar.open('You must select a home in order to access the dashboard', 'close', {
+          //     duration: 3000,
+          //     panelClass: 'my-custom-snackbar',
+          //   });
+          //   this.router.navigate(['/dash/select-home']);
+          // }
+        })
+      });
+
   }
 
   ngAfterViewInit() {

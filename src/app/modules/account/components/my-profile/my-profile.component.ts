@@ -34,8 +34,11 @@ export class MyProfileComponent implements OnInit {
       res => {
         this.userDetails = res;
         this.authService.getHomeForUser(this.userDetails.userId).subscribe(res => {
-          this.home = res;
-          this.myProfileModel.get('currentHome').setValue(this.home[0].home_name);
+          if (res.toString()[0] !== undefined) {
+            this.home = res;
+            this.myProfileModel.get('currentHome').setValue(this.home[0].home_name);
+          }
+
         })
 
         this.myProfileModel.get('Email').setValue(this.userDetails.email);
