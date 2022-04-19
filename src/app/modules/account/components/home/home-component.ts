@@ -1,10 +1,10 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from '../../services/authentication/authentication-service';
 import { MatCard } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
     selector: 'home-component',
     templateUrl: 'home-component.html',
@@ -16,17 +16,22 @@ export class HomeComponent implements OnInit {
     isAdmin;
     user;
     users = [];
+    wList;
     usersCutting;
     userCutting: string;
     userKitchen: string;
+    userWeekly: string;
     selectedOptionSwapKitchen: string;
     selectedOptionWithKitchen: string;
+
+    selectedOptionWithWeekly: string;
+    selectedOptionSwapWeekly: string;
 
 
     selectedOptionSwapCutting: string;
     selectedOptionWithCutting: string;
     myDate;
-    constructor(private authService: AuthService, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
+    constructor(private authService: AuthService, private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
     ) {
         this.user = {};
         this.authService.getUserProfile().subscribe(
@@ -69,7 +74,16 @@ export class HomeComponent implements OnInit {
             this.allocateCuttingTask();
         });
 
+        // Get Weekly Task List
+        this.authService.getWeeklyTaskList().subscribe(res => {
+            this.wList = res;
+            this.allocateWeeklyTask();
+        })
+    }
 
+    allocateWeeklyTask() {
+        this.userWeekly = this.wList[0].firstName;
+        this.selectedOptionSwapWeekly = this.wList[0].firstName;
     }
     allocateCuttingTask() {
         this.userCutting = this.usersCutting[0].name;
@@ -217,6 +231,13 @@ export class HomeComponent implements OnInit {
         temp = this.usersCutting[0];
         this.usersCutting[0] = this.usersCutting[swapIndex];
         this.usersCutting[swapIndex] = temp;
+    }
+
+    weeklyDone() {
+
+    }
+    weeklySwap() {
+
     }
 
 }

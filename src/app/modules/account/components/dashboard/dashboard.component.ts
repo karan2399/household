@@ -4,9 +4,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogSelectHomeDialog } from '../../dialogs/selectHome/dialog-select-home';
 import { AuthService } from '../../services/authentication/authentication-service';
-import { timer } from 'rxjs';
+import { JwtHelperService } from "@auth0/angular-jwt";
 export interface DialogSelectData {
   home: string;
 
@@ -24,11 +23,25 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   home: string;
+  jwtHelperService: JwtHelperService;
   constructor(private observer: BreakpointObserver,
     private authService: AuthService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router) {
+    this.jwtHelperService = new JwtHelperService();
+
+    let intervalSession = setInterval(() => {
+      if (this.jwtHelperService.isTokenExpired(localStorage.getItem('token'))) {
+        this.snackBar.open('You are now logged out due to SESSSION TIMEOUT', 'close', {
+          duration: 3000,
+          panelClass: 'my-custom-snackbar',
+        });
+        clearInterval(intervalSession);
+        this.router.navigate(['\login']);
+        this.authService.logout();
+      }
+    }, 10000)
 
     // setTimeout(function () {
     //   this.userDetails = this.authService.getUser();
@@ -40,7 +53,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if (localStorage.getItem('token') === null) {
+      this.router.navigate(['/login']);
+    }
   }
 
   ngAfterViewInit() {

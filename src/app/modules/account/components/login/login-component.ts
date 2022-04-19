@@ -40,9 +40,10 @@ export class LoginComponent implements OnInit {
     doLogin(e) {
         e.preventDefault();
         this.authService.login(this.loginForm.value).subscribe(res => {
-            localStorage.setItem("token", res["token"]);
+            // localStorage.setItem("token", res["token"]);
             if (res.success == true) {
                 localStorage.setItem('token', res.token);  //res.token
+
                 this.authService.userLoggedIn = true;
                 this.isDisabled = false;
                 this.snackBar.open('You are now logged in', 'close', {

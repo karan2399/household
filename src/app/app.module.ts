@@ -56,7 +56,6 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-
     ToastrModule.forRoot({
       progressBar: true
     })

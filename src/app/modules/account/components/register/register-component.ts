@@ -56,6 +56,10 @@ export class RegsiterComponent implements OnInit {
         e.preventDefault();
         this.authService.register(this.registerForm.value).subscribe(res => {
             if (res.succeeded) {
+                this.snackBar.open('You have been registered Succesfully', 'close', {
+                    duration: 3000,
+                    panelClass: 'my-custom-snackbar',
+                });
                 this.router.navigate(['/login']);
             }
             else {
