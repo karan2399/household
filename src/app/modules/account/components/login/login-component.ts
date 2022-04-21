@@ -55,6 +55,13 @@ export class LoginComponent implements OnInit {
                 })
                 this.router.navigate(['/dash']);
             }
+            else {
+                this.snackBar.open('The credentials you entered are incorrect!', 'close', {
+                    duration: 3000,
+                    panelClass: 'my-custom-snackbar',
+                });
+
+            }
 
 
         });

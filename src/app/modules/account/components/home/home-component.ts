@@ -94,10 +94,7 @@ export class HomeComponent implements OnInit {
         })
     }
 
-    allocateWeeklyTask() {
-        this.userWeekly = this.wList[0].firstName;
-        this.selectedOptionSwapWeekly = this.wList[0].firstName;
-    }
+
     allocateCuttingTask() {
         this.userCutting = this.usersCutting[0].name;
         this.selectedOptionSwapCutting = this.usersCutting[0].name;
@@ -129,40 +126,40 @@ export class HomeComponent implements OnInit {
 
 
         // console.log(this.users);
-        let nUsers = [];
-        for (let userI of this.users) {
-            let u = {
-                email: userI.email,
-                firstName: userI.firstName,
-                id: null,
-                lastName: userI.lastName,
-                task_Description: null,
-                task_id: (userI.task_id - 1)
-            }
-            if (u.task_id === 0) {
-                u = {
-                    email: userI.email,
-                    firstName: userI.firstName,
-                    id: null,
-                    lastName: userI.lastName,
-                    task_Description: null,
-                    task_id: this.users.length
-                }
-            }
-            nUsers.push(u);
-        }
-        this.users = nUsers.slice(0);
+        // let nUsers = [];
+        // for (let userI of this.users) {
+        //     let u = {
+        //         email: userI.email,
+        //         firstName: userI.firstName,
+        //         id: null,
+        //         lastName: userI.lastName,
+        //         task_Description: null,
+        //         task_id: (userI.task_id - 1)
+        //     }
+        //     if (u.task_id === 0) {
+        //         u = {
+        //             email: userI.email,
+        //             firstName: userI.firstName,
+        //             id: null,
+        //             lastName: userI.lastName,
+        //             task_Description: null,
+        //             task_id: this.users.length
+        //         }
+        //     }
+        //     nUsers.push(u);
+        // }
+        // this.users = nUsers.slice(0);
 
         // Post New Updated User List
-        for (let u of this.users) {
-            this.authService.postNewKitchenUsersList(u).subscribe(res => {
-                this.authService.getKitchenUserList().subscribe((uList: any) => {
-                    this.users = uList;
-                    this.allocateKitchenTask();
-                    this.allocateCuttingTask();
-                });
+        // for (let u of this.users) {
+        this.authService.postNewKitchenUsersList().subscribe(res => {
+            this.authService.getKitchenUserList().subscribe((uList: any) => {
+                this.users = uList;
+                this.allocateKitchenTask();
+                this.allocateCuttingTask();
             });
-        }
+        });
+        // }
 
 
     }
@@ -209,20 +206,20 @@ export class HomeComponent implements OnInit {
 
 
         // for (let uSwap in uSwapList) {
-        this.authService.postNewKitchenUsersList(u1).subscribe(res => {
-            this.authService.getKitchenUserList().subscribe((uList: any) => {
-                this.users = uList;
-                this.allocateKitchenTask();
-                this.allocateCuttingTask();
-            });
-        });
-        this.authService.postNewKitchenUsersList(u2).subscribe(res => {
-            this.authService.getKitchenUserList().subscribe((uList: any) => {
-                this.users = uList;
-                this.allocateKitchenTask();
-                this.allocateCuttingTask();
-            });
-        });
+        // this.authService.postNewKitchenUsersList(u1).subscribe(res => {
+        //     this.authService.getKitchenUserList().subscribe((uList: any) => {
+        //         this.users = uList;
+        //         this.allocateKitchenTask();
+        //         this.allocateCuttingTask();
+        //     });
+        // });
+        // this.authService.postNewKitchenUsersList(u2).subscribe(res => {
+        //     this.authService.getKitchenUserList().subscribe((uList: any) => {
+        //         this.users = uList;
+        //         this.allocateKitchenTask();
+        //         this.allocateCuttingTask();
+        //     });
+        // });
         // }
 
         // }
@@ -242,8 +239,54 @@ export class HomeComponent implements OnInit {
     }
 
     weeklyDone() {
+        let wUsers = [];
+        for (let [i, userI] of this.wList.entries()) {
+            // if (i == this.wList.length - 1) {
+            //     break;
+            // }
+            let u;
+            if (i === 0) {
+                u =
+                {
+                    task_id: this.wList[this.wList.length - 1].task_id,
+                    id: null,
+                    firstName: userI.firstName,
+                    lastName: userI.lastName,
+                    email: userI.email,
+                    task_Description: this.wList[this.wList.length - 1].task_Description
+                }
+            }
+            else {
+                u =
+                {
+                    task_id: this.wList[i - 1].task_id,
+                    id: null,
+                    firstName: userI.firstName,
+                    lastName: userI.lastName,
+                    email: userI.email,
+                    task_Description: this.wList[i - 1].task_Description
+                }
+            }
+            wUsers.push(u);
+
+        }
+        this.wList = wUsers.slice(0);
+        // for (let w of this.wList) {
+        //     this.authService.updateWeeklyTaskList(w).subscribe(res => {
+        //         this.authService.getWeeklyTaskList().subscribe((uList: any) => {
+        //             this.wList = uList;
+        //             this.allocateWeeklyTask();
+        //         });
+        //     });
+        // }
+        console.log(wUsers);
 
     }
+    allocateWeeklyTask() {
+        this.userWeekly = this.wList[0].firstName;
+        this.selectedOptionSwapWeekly = this.wList[0].firstName;
+    }
+
     weeklySwap() {
 
     }

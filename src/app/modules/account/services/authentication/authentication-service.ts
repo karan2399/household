@@ -17,8 +17,8 @@ export class AuthService {
   userLoggedIn: boolean = false;
   isAdmin: boolean = false;
   postNewKitchenUsersList //SaveUserInformation : API
-    (user: any) {
-    return this.http.post(AUTH_API + '/updatetasks', user);
+    () {
+    return this.http.get(AUTH_API + '/doneKitchenlist');
   }
 
 
@@ -36,7 +36,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     this.user = {};
     this.isAdmin = false;
     this.http.get(AUTH_API + "/SignOut");
@@ -186,6 +186,11 @@ export class AuthService {
   // Get Weekly Task List
   getWeeklyTaskList() {
     return this.http.get(AUTH_API + '/GetWeeklyTaskList');
+  }
+
+  // Update Weekly Task
+  updateWeeklyTaskList(weeklyUser) {
+    return this.http.post(AUTH_API + '/UpdateWeeklyTaskList', weeklyUser);
   }
 
 

@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
 
     let intervalSession = setInterval(() => {
-      if (this.jwtHelperService.isTokenExpired(localStorage.getItem('token'))) {
+      if (this.jwtHelperService.isTokenExpired(localStorage.getItem('token')) && this.authService.getUser() != {}) {
         this.snackBar.open('You are now logged out due to SESSSION TIMEOUT', 'close', {
           duration: 3000,
           panelClass: 'my-custom-snackbar',
@@ -63,7 +63,6 @@ export class DashboardComponent implements OnInit {
         this.userDetails = res;
 
         this.authService.checkHomeAdded(this.userDetails.userId).subscribe(res => {
-          console.log(res);
 
           // if (res.toString() === '') {
           //   this.snackBar.open('You must select a home in order to access the dashboard', 'close', {
