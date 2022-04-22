@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class AuthService {
   hitServer() {
-    this.http.get(AUTH_API + '/getKitchenTask');
+    return this.http.get(AUTH_API + '/getKitchenTask');
   }
 
   userLoggedIn: boolean = false;
