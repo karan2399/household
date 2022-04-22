@@ -2,13 +2,24 @@
     <div class="row">
         <div class="col">
             <mat-card class="homeCard my-2">
-                Welcome {{user.firstname}}
+                <h2>
+                    Welcome {{user.firstname}}
+                </h2>
+
             </mat-card>
             <mat-card class="homeCard">
-                {{myDate | date:'MMMM d, y'}}
+                <h4>
+                    {{myDate | date:'MMMM d, y'}}
+                    {{myDate | date:'EEEE'}}
+
+                </h4>
             </mat-card>
-            <mat-card class="homeCard my-2">
-                {{myDate | date:'EEEE'}}
+            <mat-card class="homeCard my-2" *ngIf="home" (click)="goToHome()">
+
+                <mat-icon>home</mat-icon>
+                <h5 style="display: flex;flex-direction: row;">
+                    {{home}}
+                </h5>
             </mat-card>
         </div>
     </div>
@@ -49,7 +60,7 @@
                         <mat-card class="homeCard">
                             <mat-card-title>Kitchen</mat-card-title>
                             <mat-card-content>
-                                <mat-list role="list" *ngFor="let u of users">
+                                <mat-list role="list" *ngFor="let u of users;let i=index;">
                                     <div class="userListStyle">
                                         <mat-list-item class="userListStyle" role="listitem">{{u.firstName}}
                                         </mat-list-item>

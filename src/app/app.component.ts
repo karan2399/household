@@ -13,6 +13,10 @@ export class AppComponent implements OnDestroy {
   constructor(private authService: AuthService) {
     this.authService.getUser();
     this.userLoggedIn = this.authService.userLoggedIn;
+
+    setInterval(() => {
+      this
+    }, 90000)
   }
   ngOnDestroy() {
 

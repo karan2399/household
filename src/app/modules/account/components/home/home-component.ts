@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
     selectedOptionWithCutting: string;
     myDate;
     home;
+
+
     constructor(private authService: AuthService, private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
     ) {
         this.comingSunday = new Date();
@@ -110,6 +112,7 @@ export class HomeComponent implements OnInit {
     ngAfterContentChecked(): void {
         this.cdr.detectChanges();
     }
+
 
     cuttingDone() {
         this.usersCutting.push(this.usersCutting.shift());
@@ -205,22 +208,22 @@ export class HomeComponent implements OnInit {
 
 
 
-        // for (let uSwap in uSwapList) {
-        // this.authService.postNewKitchenUsersList(u1).subscribe(res => {
-        //     this.authService.getKitchenUserList().subscribe((uList: any) => {
-        //         this.users = uList;
-        //         this.allocateKitchenTask();
-        //         this.allocateCuttingTask();
-        //     });
-        // });
-        // this.authService.postNewKitchenUsersList(u2).subscribe(res => {
-        //     this.authService.getKitchenUserList().subscribe((uList: any) => {
-        //         this.users = uList;
-        //         this.allocateKitchenTask();
-        //         this.allocateCuttingTask();
-        //     });
-        // });
-        // }
+        for (let uSwap in uSwapList) {
+            this.authService.swapKitchenList(u1).subscribe(res => {
+                this.authService.getKitchenUserList().subscribe((uList: any) => {
+                    this.users = uList;
+                    this.allocateKitchenTask();
+                    this.allocateCuttingTask();
+                });
+            });
+            this.authService.swapKitchenList(u2).subscribe(res => {
+                this.authService.getKitchenUserList().subscribe((uList: any) => {
+                    this.users = uList;
+                    this.allocateKitchenTask();
+                    this.allocateCuttingTask();
+                });
+            });
+        }
 
         // }
     }

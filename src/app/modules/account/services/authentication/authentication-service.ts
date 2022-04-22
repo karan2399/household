@@ -13,12 +13,19 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  hitServer() {
+    this.http.get(AUTH_API + '/getKitchenTask');
+  }
 
   userLoggedIn: boolean = false;
   isAdmin: boolean = false;
   postNewKitchenUsersList //SaveUserInformation : API
     () {
     return this.http.get(AUTH_API + '/doneKitchenlist');
+  }
+
+  swapKitchenList(obj) {
+    return this.http.post(AUTH_API + '/swapKitchenTask', obj);
   }
 
 
