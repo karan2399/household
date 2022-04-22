@@ -12,6 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
+
+    days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
     events: string[] = [];
     isAdmin;
     user;
@@ -33,10 +35,12 @@ export class HomeComponent implements OnInit {
     selectedOptionWithCutting: string;
     myDate;
     home;
+    cDate;
 
 
     constructor(private authService: AuthService, private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
     ) {
+        this.cDate = new Date();
         this.comingSunday = new Date();
         this.comingSunday.setDate(this.comingSunday.getDate() + (((1 + 6 - this.comingSunday.getDay()) % 7) || 7));
         this.user = {};
@@ -94,6 +98,68 @@ export class HomeComponent implements OnInit {
             this.wList = res;
             this.allocateWeeklyTask();
         })
+    }
+    getDay(i) {
+
+        let d = new Date();
+        switch (i) {
+
+            case 0:
+                {
+                    d.setDate(d.getDate());
+                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                        duration: 3000,
+                        panelClass: 'my-custom-snackbar',
+                    });
+                    break;
+                }
+            case 1:
+                {
+                    d.setDate(d.getDate() + 1);
+                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                        duration: 3000,
+                        panelClass: 'my-custom-snackbar',
+                    });
+                    break;
+                }
+            case 2:
+                {
+                    d.setDate(d.getDate() + 2);
+                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                        duration: 3000,
+                        panelClass: 'my-custom-snackbar',
+                    });
+                    break;
+                }
+            case 3:
+                {
+                    d.setDate(d.getDate() + 3);
+                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                        duration: 3000,
+                        panelClass: 'my-custom-snackbar',
+                    });
+                    break;
+                }
+            case 4:
+                {
+                    d.setDate(d.getDate() + 4);
+                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                        duration: 3000,
+                        panelClass: 'my-custom-snackbar',
+                    });
+                    break;
+                }
+            case 5:
+                {
+                    d.setDate(d.getDate() + 5);
+                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                        duration: 3000,
+                        panelClass: 'my-custom-snackbar',
+                    });
+                    break;
+                }
+
+        }
     }
 
 

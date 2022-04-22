@@ -62,8 +62,10 @@
                             <mat-card-content>
                                 <mat-list role="list" *ngFor="let u of users;let i=index;">
                                     <div class="userListStyle">
-                                        <mat-list-item class="userListStyle" role="listitem">{{u.firstName}}
+                                        <mat-list-item class="userListStyle" role="listitem" (mouseenter)="getDay(i)">
+                                            {{u.firstName}}
                                         </mat-list-item>
+
                                     </div>
                                 </mat-list>
                             </mat-card-content>
@@ -132,7 +134,7 @@
                 <mat-card class="homeCard">
                     <mat-card-subtitle>Weekly</mat-card-subtitle>
                     <mat-card-title>
-                        {{comingSunday.getMonth() }}/{{comingSunday.getDate()}}
+                        <!-- {{comingSunday.getMonth() }}/{{comingSunday.getDate()}} -->
                     </mat-card-title>
                     <mat-card-content>
                         {{userWeekly}}

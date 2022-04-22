@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
     declarations: [HomeComponent],
@@ -27,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         MatGridListModule,
         MatSelectModule,
         MatFormFieldModule,
+        MatTooltipModule,
     ],
     providers: [],
     exports: [HomeComponent],
