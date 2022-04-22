@@ -15,8 +15,10 @@ export class AppComponent implements OnDestroy {
     this.userLoggedIn = this.authService.userLoggedIn;
 
     setInterval(() => {
-      this
-    }, 90000)
+      console.log('Hitting Server to not let webservice sit idle');
+
+      this.authService.hitServer();
+    }, 300000)
   }
   ngOnDestroy() {
 
