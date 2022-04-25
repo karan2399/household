@@ -36,15 +36,17 @@ export class DashboardComponent implements OnInit {
 
 
     let intervalSession = setInterval(() => {
-      if (this.jwtHelperService.isTokenExpired(localStorage.getItem('token')) && this.authService.getUser() != {}) {
-        this.snackBar.open('You are now logged out due to SESSSION TIMEOUT', 'close', {
+      if (localStorage.getItem('token') != null && this.jwtHelperService.isTokenExpired(localStorage.getItem('token'))) {
+
+        this.snackBar.open('You are now logged out due to SESSSION TIMEOUT', 'Close', {
           duration: 3000,
           panelClass: 'my-custom-snackbar',
         });
-        clearInterval(intervalSession);
-        this.router.navigate(['\login']);
+
         this.authService.logout();
+        this.router.navigate(['\login']);
       }
+      clearInterval(intervalSession);
     }, 10000)
 
     // setTimeout(function () {

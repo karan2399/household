@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     }
     isDisabled = false;
     ngOnInit() {
-        if (localStorage.getItem('token') !== null) {
+        if (localStorage.getItem('token') !== null && this.authService.getUser() != {}) {
             this.router.navigate(['/dash/home']);
         }
         this.email = this.loginForm.get('email');

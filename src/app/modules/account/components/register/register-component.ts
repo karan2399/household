@@ -35,7 +35,11 @@ export class RegsiterComponent implements OnInit {
             birthdate: new FormControl("", [Validators.required]),
 
             // username: new FormControl("", [Validators.required]),
-        })
+        });
+
+    }
+    getToday(): string {
+        return new Date().toISOString().split('T')[0]
     }
 
     ngOnInit() {

@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Phone</label>
                     <input type="text" formControlName="phoneNumber" id="defaultRegisterFormPhone"
-                        class="form-control mb-4" placeholder="Phone" max="10">
+                        class="form-control mb-4" placeholder="Phone" maxlength="10">
                     <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="input-error">
                         <p>
                             Please enter your Phone Number
@@ -70,7 +70,7 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Birth Date</label>
                     <input type="date" formControlName="birthdate" id="defaultRegisterFormBdate"
-                        class="form-control mb-4" placeholder="Birth Date">
+                        class="form-control mb-4" placeholder="Birth Date" min="1985-01-01" [max]="getToday()">
                     <div *ngIf="!birthdate.valid && birthdate.touched" class="input-error">
                         <p>
                             Please enter your Birth Date
@@ -81,8 +81,6 @@
 
                 <div class="col">
                     <button class="btn btn-primary" [disabled]="registerForm.invalid" type="submit">Register</button>
-                </div>
-                <div class="col">
                     <button type="button" class="btn btn-secondary" (click)="onLogin()">Login</button>
                 </div>
             </form>

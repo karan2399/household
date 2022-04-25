@@ -185,6 +185,9 @@ export class HomeComponent implements OnInit {
     ngAfterContentChecked(): void {
         this.cdr.detectChanges();
     }
+    goToProfile() {
+        this.router.navigate(['/dash/profile'])
+    }
 
 
     cuttingDone() {
