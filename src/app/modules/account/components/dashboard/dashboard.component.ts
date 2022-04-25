@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from '../../services/authentication/authentication-service';
 import { JwtHelperService } from "@auth0/angular-jwt";
+
 export interface DialogSelectData {
   home: string;
 
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   home: string;
   jwtHelperService: JwtHelperService;
+
   constructor(private observer: BreakpointObserver,
     private authService: AuthService,
     public dialog: MatDialog,

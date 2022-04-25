@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
-import { AuthService } from '../../services/authentication/authentication-service';
 import { MatCard } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/modules/account/services/authentication/authentication-service';
 @Component({
     selector: 'home-component',
     templateUrl: 'home-component.html',
@@ -41,7 +41,8 @@ export class HomeComponent implements OnInit {
     constructor(private authService: AuthService, private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
     ) {
         this.cDate = new Date();
-
+        this.comingSunday = new Date();
+        this.comingSunday.setDate(this.comingSunday.getDate() + (((1 + 6 - this.comingSunday.getDay()) % 7) || 7));
         this.user = {};
         this.authService.getUserProfile().subscribe(
             res => {
@@ -101,11 +102,6 @@ export class HomeComponent implements OnInit {
     goToHome() {
         this.router.navigate(['/dash/select-home']);
     }
-    nextDay(x) {
-        var now = new Date();
-        now.setDate(now.getDate() + (x + (7 - now.getDay())) % 7);
-        return now;
-    }
     getDay(i) {
 
         let d = new Date();
@@ -114,7 +110,7 @@ export class HomeComponent implements OnInit {
             case 0:
                 {
                     d.setDate(d.getDate());
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Clos', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -123,7 +119,7 @@ export class HomeComponent implements OnInit {
             case 1:
                 {
                     d.setDate(d.getDate() + 1);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Clos', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -132,7 +128,7 @@ export class HomeComponent implements OnInit {
             case 2:
                 {
                     d.setDate(d.getDate() + 2);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Clos', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -141,7 +137,7 @@ export class HomeComponent implements OnInit {
             case 3:
                 {
                     d.setDate(d.getDate() + 3);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Clos', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -150,7 +146,7 @@ export class HomeComponent implements OnInit {
             case 4:
                 {
                     d.setDate(d.getDate() + 4);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Clos', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -159,7 +155,7 @@ export class HomeComponent implements OnInit {
             case 5:
                 {
                     d.setDate(d.getDate() + 5);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Clos', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });

@@ -108,7 +108,10 @@ export class SelectHomeComponent implements OnInit {
     }
 
     this.authService.addHomeToUser(obj).subscribe(res => {
-      console.log(res);
+      this.snackbar.open('You have succesfully added your home', 'close', {
+        duration: 3000,
+        panelClass: 'my-custom-snackbar',
+      });
     });
   }
   updateHome() {

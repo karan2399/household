@@ -8,6 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Libraries
 npm install @auth0/angular-jwt
+npm install idle-js --save
 
 ## Code scaffolding
 

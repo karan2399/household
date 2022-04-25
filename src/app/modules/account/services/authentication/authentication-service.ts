@@ -192,12 +192,12 @@ export class AuthService {
 
   // Get Weekly Task List
   getWeeklyTaskList() {
-    return this.http.get(AUTH_API + '/GetWeeklyTaskList');
+    return this.http.get(AUTH_API + '/getWeeklyUserTask');
   }
 
   // Update Weekly Task
   updateWeeklyTaskList(weeklyUser) {
-    return this.http.post(AUTH_API + '/UpdateWeeklyTaskList', weeklyUser);
+    return this.http.post(AUTH_API + '/doneWeeklyTask', weeklyUser);
   }
 
 
