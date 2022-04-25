@@ -65,7 +65,8 @@
                             <mat-card-content>
                                 <mat-list role="list" *ngFor="let u of users;let i=index;">
                                     <div class="userListStyle">
-                                        <mat-list-item class="userListStyle" role="listitem" (click)="getDay(i)">
+                                        <mat-list-item class="userListStyle" role="listitem" style="cursor: pointer;"
+                                            (click)="getDay(i)">
                                             {{u.firstName}}
                                         </mat-list-item>
 

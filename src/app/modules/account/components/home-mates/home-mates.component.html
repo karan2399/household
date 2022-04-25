@@ -1,0 +1,10 @@
+<mat-card class="homeCard">
+    <mat-card-title>Home Mates</mat-card-title>
+    <mat-card-content>
+        <ul *ngFor="let h of homeusers">
+            <li>
+                {{h.firstName}} {{h.lastName}}
+            </li>
+        </ul>
+    </mat-card-content>
+</mat-card>

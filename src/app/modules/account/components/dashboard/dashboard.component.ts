@@ -112,4 +112,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['dash/select-home']);
     this.opened = false;
   }
+  goToHomeMates() {
+    this.router.navigate(['dash/home-mates']);
+    this.opened = false;
+  }
 }

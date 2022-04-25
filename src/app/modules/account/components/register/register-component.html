@@ -11,155 +11,66 @@
         <div>
             <form [formGroup]="registerForm" class="text-center " (submit)=" doRegsiter($event)">
 
-
-                <div class="row">
-                    <h1>
-                        Register
-                    </h1>
-                    <div class="col">
-                        <label>First Name</label>
-                    </div>
-
-                    <div class="col">
-                        <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName"
-                            class="form-control" placeholder="First name">
-
-                    </div>
-                </div>
-                <div class="row">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName"
+                        class="form-control" placeholder="First name">
                     <div *ngIf="!firstName.valid && firstName.touched" class="input-error">
                         <p>
                             Please enter your legal First Name
                         </p>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <label>Last Name</label>
-                    </div>
-                    <div class="col">
-                        <input type="text" formControlName="lastName" id="defaultRegisterFormLastName"
-                            class="form-control" placeholder="Last name">
-                    </div>
                 </div>
-                <div class="row">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Last Name</label>
+                    <input type="text" formControlName="lastName" id="defaultRegisterFormLastName" class="form-control"
+                        placeholder="Last name">
                     <div *ngIf="!lastName.valid && lastName.touched" class="input-error">
                         <p>
                             Please enter your legal Last Name
                         </p>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col">
-                        <label>Email</label>
-                    </div>
-
-                    <div class="col">
-                        <input type="email" formControlName="email" id="defaultRegisterFormEmail"
-                            class="form-control mb-4" placeholder="E-mail">
-                    </div>
-                </div>
-
-                <div class="row">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Email</label>
+                    <input type="email" formControlName="email" id="defaultRegisterFormEmail" class="form-control mb-4"
+                        placeholder="E-mail">
                     <div *ngIf="!email.valid && email.touched" class="input-error">
                         <p>
                             Please enter your Email
                         </p>
                     </div>
                 </div>
-
-                <!-- <div class="row">
-                <div class="col">
-                    <label>Username</label>
-                </div>
-
-                <div class="col">
-                    <input type="text" formControlName="username" id="defaultRegisterFormUsername"
-                        class="form-control mb-4" placeholder="Username">
-                </div>
-            </div>
-
-            <div class="row">
-                <div *ngIf="!username.valid && username.touched" class="input-error">
-                    <p>
-                        Please enter your username
-                    </p>
-                </div>
-            </div> -->
-
-
-                <div class="row">
-                    <div class="col">
-                        <label>Password</label>
-                    </div>
-
-                    <div class="col">
-                        <input type="password" autocomplete="new-password" formControlName="password"
-                            id="defaultRegisterFormPassword" class="form-control mb-4" placeholder="Password">
-                    </div>
-
-                </div>
-
-                <div class="row">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" autocomplete="new-password" formControlName="password"
+                        id="defaultRegisterFormPassword" class="form-control mb-4" placeholder="Password">
                     <div *ngIf="!password.valid && password.touched" class="input-error">
                         <p>
                             Please enter your Password
                         </p>
                     </div>
                 </div>
-
-
-                <div class="row">
-                    <div class="col">
-                        <label>Confirm Password</label>
-                    </div>
-                    <div class="col">
-                        <input type="password" formControlName="confirmPassword" id="defaultRegisterFormConfirmPassword"
-                            class="form-control mb-4" placeholder="Confirm Password">
-                    </div>
-
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" id="defaultRegisterFormConfirmPassword"
+                        class="form-control mb-4" placeholder="Confirm Password">
                 </div>
-
-                <!-- <div class="row">
-                <div *ngIf="!confirmPassword.valid && confirmPassword.touched" class="input-error">
-                    <p>
-                        Please enter your Username
-                    </p>
-                </div>
-            </div> -->
-                <div class="row">
-                    <div class="col">
-                        <label>Phone Number</label>
-                    </div>
-
-                    <div class="col">
-                        <input type="text" formControlName="phoneNumber" id="defaultRegisterFormPhone"
-                            class="form-control mb-4" placeholder="Phone">
-                    </div>
-                </div>
-
-                <div class="row">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Phone</label>
+                    <input type="text" formControlName="phoneNumber" id="defaultRegisterFormPhone"
+                        class="form-control mb-4" placeholder="Phone" max="10">
                     <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="input-error">
                         <p>
                             Please enter your Phone Number
                         </p>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col">
-                        <label>Birth Date</label>
-                    </div>
-
-                    <div class="col">
-                        <input type="date" formControlName="birthdate" id="defaultRegisterFormBdate"
-                            class="form-control mb-4" placeholder="Birth Date">
-                    </div>
-                </div>
-
-                <div class="row">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Birth Date</label>
+                    <input type="date" formControlName="birthdate" id="defaultRegisterFormBdate"
+                        class="form-control mb-4" placeholder="Birth Date">
                     <div *ngIf="!birthdate.valid && birthdate.touched" class="input-error">
                         <p>
                             Please enter your Birth Date
@@ -168,14 +79,11 @@
                 </div>
 
 
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" [disabled]="registerForm.invalid"
-                            type="submit">Register</button>
-                        &nbsp; &nbsp;
-                        <button type="button" class="btn btn-secondary" (click)="onLogin()">Login</button>
-                    </div>
-
+                <div class="col">
+                    <button class="btn btn-primary" [disabled]="registerForm.invalid" type="submit">Register</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-secondary" (click)="onLogin()">Login</button>
                 </div>
             </form>
         </div>
