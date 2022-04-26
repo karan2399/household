@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
         this.authService.checkHomeAdded(this.userDetails.userId).subscribe(res => {
 
           // if (res.toString() === '') {
-          //   this.snackBar.open('You must select a home in order to access the dashboard', 'close', {
+          //   this.snackBar.open('You must select a home in order to access the dashboard', 'Close', {
           //     duration: 3000,
           //     panelClass: 'my-custom-snackbar',
           //   });
@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem('token');
     this.authService.logout();
     this.router.navigate(['/login']);
-    this.snackBar.open('You are now logged out', 'close', {
+    this.snackBar.open('You are now logged out', 'Close', {
       duration: 3000,
       panelClass: 'my-custom-snackbar',
     });
@@ -116,6 +116,10 @@ export class DashboardComponent implements OnInit {
   }
   goToHomeMates() {
     this.router.navigate(['dash/home-mates']);
+    this.opened = false;
+  }
+  goToChangePassword() {
+    this.router.navigate(['dash/change-password']);
     this.opened = false;
   }
 }

@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
             case 0:
                 {
                     d.setDate(d.getDate());
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Close', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
             case 1:
                 {
                     d.setDate(d.getDate() + 1);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Close', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -132,7 +132,7 @@ export class HomeComponent implements OnInit {
             case 2:
                 {
                     d.setDate(d.getDate() + 2);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Close', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit {
             case 3:
                 {
                     d.setDate(d.getDate() + 3);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Close', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit {
             case 4:
                 {
                     d.setDate(d.getDate() + 4);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Close', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
@@ -159,7 +159,7 @@ export class HomeComponent implements OnInit {
             case 5:
                 {
                     d.setDate(d.getDate() + 5);
-                    this.snackBar.open(this.days[d.getDay()], 'close', {
+                    this.snackBar.open(this.days[d.getDay()], 'Close', {
                         duration: 3000,
                         panelClass: 'my-custom-snackbar',
                     });
