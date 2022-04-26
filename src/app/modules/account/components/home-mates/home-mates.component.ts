@@ -25,6 +25,8 @@ export class HomeMatesComponent implements OnInit {
           this.homeusers = this.homeusers.filter(h => {
             return this.cHome[0].home_id === h.home_id;
           });
+
+
         })
       })
     })
