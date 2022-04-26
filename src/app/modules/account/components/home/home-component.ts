@@ -48,16 +48,17 @@ export class HomeComponent implements OnInit {
                 this.user = res;
                 if (res['role'] === 'Admin') {
                     this.isAdmin = true;
-                    this.authService.getHomeForUser(this.user.userId).subscribe(res => {
-                        if (res.toString()[0] !== undefined) {
-                            this.home = res[0].home_name;
-                        }
-                        else {
-                            this.home = null;
-                        }
 
-                    })
                 }
+                this.authService.getHomeForUser(this.user.userId).subscribe(res => {
+                    if (res.toString()[0] !== undefined) {
+                        this.home = res[0].home_name;
+                    }
+                    else {
+                        this.home = null;
+                    }
+
+                })
             },
             err => {
                 console.log(err);
