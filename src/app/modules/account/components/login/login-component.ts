@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
                 this.authService.userLoggedIn = true;
                 this.isDisabled = false;
-                this.snackBar.open('You are now logged in', 'close', {
+                this.snackBar.open('You are now logged in', 'Close', {
                     duration: 3000,
                     panelClass: 'my-custom-snackbar',
                 });
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/dash']);
             }
             else {
-                this.snackBar.open('The credentials you entered are incorrect!', 'close', {
+                this.snackBar.open('The credentials you entered are incorrect!', 'Close', {
                     duration: 3000,
                     panelClass: 'my-custom-snackbar',
                 });
