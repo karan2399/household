@@ -8,6 +8,8 @@ import { AuthGuard } from './modules/Guards/AuthGuard/auth.guard';
 import { AccountActivationComponent } from './modules/account/components/account-activation/account-activation.component';
 import { MyProfileComponent } from './modules/account/components/my-profile/my-profile.component';
 import { SelectHomeComponent } from './modules/account/components/select-home/select-home.component';
+import { HomeMatesComponent } from './modules/account/components/home-mates/home-mates.component';
+import { ChangePasswordComponent } from './modules/account/components/change-password/change-password.component';
 
 const routes: Routes = [
     { path: 'accountActivation', component: AccountActivationComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
             { path: 'home', component: HomeComponent },
             { path: 'profile', component: MyProfileComponent },
             { path: 'select-home', component: SelectHomeComponent },
+            { path: 'home-mates', component: HomeMatesComponent },
+            { path: 'change-password', component: ChangePasswordComponent },
             { path: '**', component: HomeComponent },
         ],
         canActivate: [AuthGuard],

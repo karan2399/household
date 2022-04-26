@@ -47,6 +47,7 @@ export class AuthService {
     this.user = {};
     this.isAdmin = false;
     this.http.get(AUTH_API + "/SignOut");
+
   }
 
   getUser() {
@@ -141,6 +142,11 @@ export class AuthService {
     return this.http.get(AUTH_API + "/GetUsers", { headers: header });
   }
 
+  // Change Password
+  changePassword(obj) {
+    return this.http.post(AUTH_API + '/changePassword', obj);
+  }
+
   //SaveUserInformation : API
   updateProfile(myProfileModel: any) {
     var body = {
@@ -178,6 +184,11 @@ export class AuthService {
   // Get Home for particular User
   getHomeForUser(id) {
     return this.http.get(AUTH_API + '/homeusers?Id=' + id);
+  }
+
+  // Get Home Users
+  getHomeUsers() {
+    return this.http.get(AUTH_API + '/gethomeusers');
   }
 
   // Check if home is added to a user or not

@@ -25,6 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SelectHomeComponent } from './modules/account/components/select-home/select-home.component';
 import { MatButton, MatButtonModule } from '@angular/material/button';
+import { HomeMatesComponent } from './modules/account/components/home-mates/home-mates.component';
+import { ChangePasswordComponent } from './modules/account/components/change-password/change-password.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
     DashboardComponent,
     AccountActivationComponent,
     MyProfileComponent,
-    SelectHomeComponent
+    SelectHomeComponent,
+    HomeMatesComponent,
+    ChangePasswordComponent
 
   ],
   imports: [
