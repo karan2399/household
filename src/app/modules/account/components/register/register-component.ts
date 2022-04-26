@@ -76,6 +76,39 @@ export class RegsiterComponent implements OnInit {
                             });
                             break;
                         }
+                    case "PasswordTooShort":
+                        {
+                            this.snackBar.open(res.errors[0].description, 'close', {
+                                duration: 3000,
+                                panelClass: 'my-custom-snackbar',
+                            });
+                            break;
+                        }
+                    case "PasswordRequiresNonAlphanumeric":
+                        {
+                            this.snackBar.open(res.errors[0].description, 'close', {
+                                duration: 3000,
+                                panelClass: 'my-custom-snackbar',
+                            });
+                            break;
+                        }
+
+                    case "PasswordRequiresDigit":
+                        {
+                            this.snackBar.open(res.errors[0].description, 'close', {
+                                duration: 3000,
+                                panelClass: 'my-custom-snackbar',
+                            });
+                            break;
+                        }
+                    case "PasswordRequiresUpper":
+                        {
+                            this.snackBar.open(res.errors[0].description, 'close', {
+                                duration: 3000,
+                                panelClass: 'my-custom-snackbar',
+                            });
+                            break;
+                        }
                     default:
                         {
                             break;
