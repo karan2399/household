@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     }
 
     doLogin(e) {
+        // Demo Comment
         e.preventDefault();
         this.authService.login(this.loginForm.value).subscribe(res => {
             // localStorage.setItem("token", res["token"]);
