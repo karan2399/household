@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
                 this.authService.userLoggedIn = true;
                 this.isDisabled = false;
-                this.snackBar.open('You are now logged in', 'Close', {
+                this.snackBar.open('You are now successfully logged in', 'Close', {
                     duration: 3000,
                     panelClass: 'my-custom-snackbar',
                 });
