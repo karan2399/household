@@ -27,6 +27,9 @@ import { SelectHomeComponent } from './modules/account/components/select-home/se
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { HomeMatesComponent } from './modules/account/components/home-mates/home-mates.component';
 import { ChangePasswordComponent } from './modules/account/components/change-password/change-password.component';
+import { HistoryComponent } from './modules/account/components/history/history.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { ChangePasswordComponent } from './modules/account/components/change-pas
     MyProfileComponent,
     SelectHomeComponent,
     HomeMatesComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    HistoryComponent
 
   ],
   imports: [
@@ -60,6 +64,8 @@ import { ChangePasswordComponent } from './modules/account/components/change-pas
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
     ToastrModule.forRoot({
       progressBar: true
     })

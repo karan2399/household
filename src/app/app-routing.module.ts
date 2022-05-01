@@ -10,6 +10,7 @@ import { MyProfileComponent } from './modules/account/components/my-profile/my-p
 import { SelectHomeComponent } from './modules/account/components/select-home/select-home.component';
 import { HomeMatesComponent } from './modules/account/components/home-mates/home-mates.component';
 import { ChangePasswordComponent } from './modules/account/components/change-password/change-password.component';
+import { HistoryComponent } from './modules/account/components/history/history.component';
 
 const routes: Routes = [
     { path: 'accountActivation', component: AccountActivationComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
             { path: 'home', component: HomeComponent },
             { path: 'profile', component: MyProfileComponent },
             { path: 'select-home', component: SelectHomeComponent },
+            { path: 'history', component: HistoryComponent },
             { path: 'home-mates', component: HomeMatesComponent },
             { path: 'change-password', component: ChangePasswordComponent },
             { path: '**', component: HomeComponent },
