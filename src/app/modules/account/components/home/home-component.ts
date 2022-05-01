@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { MatSidenav } from '@angular/material/sidenav';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/authentication/authentication-service';
-import { MatCard } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+
+
 @Component({
     selector: 'home-component',
     templateUrl: 'home-component.html',
@@ -12,6 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
+    animal: string;
+    name: string;
 
     days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
     events: string[] = [];
@@ -33,12 +35,15 @@ export class HomeComponent implements OnInit {
 
     selectedOptionSwapCutting: string;
     selectedOptionWithCutting: string;
+    @ViewChild('kitchenDoneComment') kitchenDoneComment: ElementRef;
     myDate;
     home;
     cDate;
 
 
-    constructor(private authService: AuthService, private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
+    constructor(private authService: AuthService,
+        private dialog: MatDialog,
+        private snackBar: MatSnackBar, private dataRoute: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef
     ) {
         this.cDate = new Date();
 
@@ -370,6 +375,5 @@ export class HomeComponent implements OnInit {
     weeklySwap() {
 
     }
-
 }
 

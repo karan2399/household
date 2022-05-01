@@ -7,11 +7,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { AuthService } from '../../services/authentication/authentication-service';
 import { JwtHelperService } from "@auth0/angular-jwt";
 
-export interface DialogSelectData {
-  home: string;
-
-}
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -120,6 +115,10 @@ export class DashboardComponent implements OnInit {
   }
   goToChangePassword() {
     this.router.navigate(['dash/change-password']);
+    this.opened = false;
+  }
+  goToHistory() {
+    this.router.navigate(['dash/history']);
     this.opened = false;
   }
 }
