@@ -24,6 +24,7 @@ export class MyProfileComponent implements OnInit {
       Role: new FormControl(),
       UserId: new FormControl(),
       bdate: new FormControl(),
+      phone: new FormControl(),
       currentHome: new FormControl(),
     });
 
@@ -47,6 +48,7 @@ export class MyProfileComponent implements OnInit {
         this.myProfileModel.get('Role').setValue(this.userDetails.role);
         this.myProfileModel.get('UserId').setValue(this.userDetails.userId);
         this.myProfileModel.get('bdate').setValue(this.userDetails.birthdate);
+        this.myProfileModel.get('phone').setValue(this.userDetails.phoneNumber);
 
       },
       err => {

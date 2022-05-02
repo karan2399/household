@@ -10,6 +10,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 npm install @auth0/angular-jwt
 npm install idle-js --save
 npm install -g cordova
+npm install @capacitor/core
+npm install @capacitor/cli
 
 ## Code scaffolding
 

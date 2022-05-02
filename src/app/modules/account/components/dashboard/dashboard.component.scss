@@ -25,6 +25,20 @@ mat-sidenav-container{
     height: calc(100vh - 65px);
 }
 
+.version-button {
+    width: 100%;
+    display: flex;
+    margin-left: 10px;
+    font-size: 0.75rem;
+    border:none;
+    background-color: transparent;
+    color:black;
+    margin-top: 10px;
+
+    mat-icon{
+        margin-right: 8px;
+    }
+}
 .menu-button{
     width: 100%;
     display: flex;
