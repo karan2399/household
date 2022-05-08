@@ -12,8 +12,15 @@
                 </mat-form-field><br>
                 <button mat-button color="primary" type="button" (click)="addHomeToUser()" *ngIf="!home"
                     [disabled]="selectedHome == null">Submit</button>
-                <button mat-button type="button" color="primary" *ngIf="home" [disabled]="!selectedHome"
+                <button mat-button type="button" color="primary" *ngIf="home" disabled
                     (click)="updateHome()">Update</button>
+                <button mat-button type="button" color="primary" *ngIf="home">
+                    <a target="blank"
+                        href="mailto:
+                    hometaskv1@gmail.com?subject=Home Change Request&body=Please Change my Home to ________&cc=karan2399@gmail.com"
+                        style="text-decoration: none;">
+                        Request</a>
+                </button>
 
             </form>
         </div>
