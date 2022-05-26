@@ -211,5 +211,10 @@ export class AuthService {
     return this.http.post(AUTH_API + '/doneWeeklyTask', weeklyUser);
   }
 
+  // Resetting Kitchen User List
+  resetKitchenUserList() {
+    return this.http.get(AUTH_API + '/ResetUserList');
+  }
+
 
 }

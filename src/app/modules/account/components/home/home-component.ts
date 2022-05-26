@@ -248,6 +248,13 @@ export class HomeComponent implements OnInit {
 
 
     }
+    resetKitchenUserList() {
+        this.authService.resetKitchenUserList().subscribe((res) => {
+            this.authService.getKitchenUserList().subscribe((uList: any) => {
+                this.users = uList;
+            })
+        })
+    }
     kitchenSwap() {
         // let swapIndex;
         // this.users.forEach((u, index) => {
