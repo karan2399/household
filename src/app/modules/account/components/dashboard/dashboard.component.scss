@@ -5,11 +5,12 @@ mat-sidenav {
     color: white;
     text-align: center;
 }
-
 .toolBarCss{
-    color: #141725;
+    color: #141725;    
+    display: flex;
 }
 .toolBar{
+
     // background:#141725;
     color: #141725;
     height: 50px;
@@ -39,6 +40,7 @@ mat-sidenav-container{
         margin-right: 8px;
     }
 }
+
 .menu-button{
     width: 100%;
     display: flex;

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplashScreenModule } from 'src/app/modules/getstarted/components/splash/splash.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegsiterComponent } from './modules/account/components/register/register-component';
 import { AuthInterceptor } from './modules/Guards/AuthGuard/auth.interceptor';
@@ -63,6 +64,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatMenuModule,
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,

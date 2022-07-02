@@ -255,6 +255,7 @@ export class HomeComponent implements OnInit {
             })
         })
     }
+
     kitchenSwap() {
         // let swapIndex;
         // this.users.forEach((u, index) => {

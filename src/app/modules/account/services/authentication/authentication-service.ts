@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 const AUTH_API = 'https://home-appapi.herokuapp.com/api';
 // const AUTH_API = 'https://stagging-homeapp.herokuapp.com/api';
+const whatsapp_API = 'https://api.callmebot.com/whatsapp.php?';
+const apiKeyWhatsapp = 447356;
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
